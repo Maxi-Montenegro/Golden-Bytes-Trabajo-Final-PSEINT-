@@ -4,5 +4,12 @@ Reporsitorio para el Trabajo Final en PSEINT para el equipo Golden Bytes . Para 
 Integrantes
 
 -Maxi Montenegro
+
 -Ezequiel Quiroz
+
+-Jesus Gomez
+
 -Franco Poblete
+
+-Irene Machuca
+
