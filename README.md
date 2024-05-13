@@ -9,4 +9,7 @@ Integrantes
 
 -Jesus Gomez
 
--Irene Machuca.
+-Irene Machuca
+
+-Franco Poblete
+
