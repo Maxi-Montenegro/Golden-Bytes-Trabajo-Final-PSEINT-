@@ -310,3 +310,4 @@ SubAlgoritmo Coordenadas
 	Hasta Que Falso // Bucle infinito, termina manualmente
 FinSubAlgoritmo
 	
+	
