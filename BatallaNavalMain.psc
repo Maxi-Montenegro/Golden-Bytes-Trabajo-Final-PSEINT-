@@ -154,7 +154,8 @@ SubProceso MensajeBienvenida
 	Escribir "";
 	Escribir "                                              Estas Listo y preparado para esta Gran Aventura";
 	Escribir "";
-	Escribir "                                                            Cómo te llamas ?";
+	Escribir "                                                            Presentate Soldado ";
+	Escribir "                                                            Escribe Tu Nombre ";
 	leer nombre_jugador ;
 	Escribir "";
 	Escribir "                                        Perfecto soldado"," ", nombre_jugador, " ¡¡¡ Que comience la Batalla !!!";
