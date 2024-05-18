@@ -230,19 +230,19 @@ SubAlgoritmo Coordenadas
 	Definir coord_letra Como Caracter;
 	Definir coord_num Como Entero;
 	Dimension matriz[11,11];
-	Dimension letras[10];
+	Dimension letras[11];
 	
 	// Inicializar letras
-	letras[0] <- 'A';
-	letras[1] <- 'B';
-	letras[2] <- 'C';
-	letras[3] <- 'D';
-	letras[4] <- 'E';
-	letras[5] <- 'F';
-	letras[6] <- 'G';
-	letras[7] <- 'H';
-	letras[8] <- 'I';
-	letras[9] <- 'J';
+	letras[1] <- 'A';
+	letras[2] <- 'B';
+	letras[3] <- 'C';
+	letras[4] <- 'D';
+	letras[5] <- 'E';
+	letras[6] <- 'F';
+	letras[7] <- 'G';
+	letras[8] <- 'H';
+	letras[9] <- 'I';
+	letras[10] <- 'J';
 	
 	// Inicializar matriz
 	Para i <- 0 Hasta 10 Hacer
@@ -272,21 +272,32 @@ SubAlgoritmo Coordenadas
 		Escribir "Ingrese las coordenadas (ejemplo: A 5): ";
 		Leer coord_letra, coord_num;
 		
+		coord_letra <- Mayusculas(coord_letra);
+		
 		// Convertir coordenadas
 		columna <- coord_num;
-		Para i <- 0 Hasta 9 Hacer
+		Para i <- 1 Hasta 10 Hacer
 			Si letras[i] = coord_letra Entonces
 				fila <- i;
 			FinSi
 		FinPara
 		
 		// Verificar coordenada
-		Si matriz[fila, columna] = 1 Entonces
-			Escribir "¡Tocado!";
-			matriz[fila, columna] <- 2; // 2 representa barco dañado
-		SiNo
+		Si matriz[fila, columna] = 0 Entonces
 			Escribir "Agua";
 			matriz[fila, columna] <- -1; // -1 representa agua
+		SiNo
+			Si matriz[fila, columna] = -1 Entonces
+				Escribir "Ya has atacado aqui, es agua";
+			FinSi
+		FinSi
+		Si matriz[fila, columna] = 1 Entonces
+			Escribir "Genial soldado, le diste al Barco";
+			matriz[fila, columna] <- 2; // 2 representa barco dañado
+		SiNo
+			Si matriz[fila, columna] = 2 Entonces
+				Escribir "Ya has atacado aqui, el barco ya esta deñado";
+			FinSi
 		FinSi
 		
 		// Mostrar matriz (para pruebas)
