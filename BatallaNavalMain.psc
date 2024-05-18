@@ -298,6 +298,4 @@ SubAlgoritmo Coordenadas
 		FinPara
 	Hasta Que Falso // Bucle infinito, termina manualmente
 FinSubAlgoritmo
-
-FinSubAlgoritmo
 	
