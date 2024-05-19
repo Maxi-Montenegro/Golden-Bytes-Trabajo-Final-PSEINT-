@@ -7,8 +7,7 @@
 Proceso BatallaNavalMain
 	
 	textoEstatico();
-	Borrar Pantalla;
-	Animacion();
+	
 	Borrar Pantalla;
 	MensajeBienvenida();
 	Borrar Pantalla;
@@ -18,90 +17,9 @@ Proceso BatallaNavalMain
 	
 	
 FinProceso
-
-// Eset subproceso es una animacion que muestra el nombre de nuestro juego
-SubProceso Animacion
-	
-	Definir logo Como caracter;
-	Definir i,j Como Entero;
-	Definir tecla Como Caracter;
-	
-	Dimension logo[24];	// Definimos un arreglo que contenga los caracteres que formaran la animacion
-	
-	// cargamos manualmente el arreglo para lograr el efecto deseado
-	
-	logo[1] <- "      8 888888888o           .8.    8888888 8888888888    .8.          8 8888         8 8888                  .8.";          
-	logo[2] <- "      8 8888    `88.        .888.         8 8888         .888.         8 8888         8 8888                 .888.";         
-	logo[3] <- "      8 8888     `88       :88888.        8 8888        :88888.        8 8888         8 8888                :88888.";        
-	logo[4] <- "      8 8888     ,88      . `88888.       8 8888       . `88888.       8 8888         8 8888               . `88888.";       
-	logo[5] <- "      8 8888.   ,88´     .8. `88888.      8 8888      .8. `88888.      8 8888         8 8888              .8. `88888.";      
-	logo[6] <- "      8 8888888888      .8`8. `88888.     8 8888     .8`8. `88888.     8 8888         8 8888             .8`8. `88888.";     
-	logo[7] <- "      8 8888    `88.   .8´ `8. `88888.    8 8888    .8´ `8. `88888.    8 8888         8 8888            .8´ `8. `88888.";    
-	logo[8] <- "      8 8888      88  .8´   `8. `88888.   8 8888   .8´   `8. `88888.   8 8888         8 8888           .8´   `8. `88888.";   
-	logo[9] <- "      8 8888    ,88´ .888888888. `88888.  8 8888  .888888888. `88888.  8 8888         8 8888          .888888888. `88888.";  
-	logo[10]<- "      8 888888888P  .8´       `8. `88888. 8 8888. 8´       `8. `88888. 8 888888888888 8 888888888888 .8´       `8. `88888.";
-	logo[11]<- "                                    ";
-	logo[12]<- "                                    ";
-	logo[13]<- "                                    ";
-	logo[14]<- "                                                                    b.             8            .8.   `8.`888b           ,8´   .8.            8 8888";
-	logo[15]<- "                                                                    888o.          8           .888.   `8.`888b         ,8´   .888.           8 8888";
-	logo[16]<- "                                                                    Y88888o.       8          :88888.   `8.`888b       ,8´   :88888.          8 8888";
-	logo[17]<- "                                                                    .`Y888888o.    8         . `88888.   `8.`888b     ,8´   . `88888.         8 8888";
-	logo[18]<- "                                                                    8o. `Y888888o. 8        .8. `88888.   `8.`888b   ,8´   .8. `88888.        8 8888";
-	logo[19]<- "                                                                    8`Y8o. `Y88888o8       .8`8. `88888.   `8.`888b ,8´   .8`8. `88888.       8 8888";         
-	logo[20]<- "                                                                    8   `Y8o. `Y8888      .8´ `8. `88888.   `8.`888b8´   .8´ `8. `88888.      8 8888";
-	logo[21]<- "                                                                    8      `Y8o. `Y8     .8´   `8. `88888.   `8.`888´   .8´   `8. `88888.     8 8888";
-	logo[22]<- "                                                                    8         `Y8o.`    .888888888. `88888.   `8.`8´   .888888888. `88888.    8 8888";
-	logo[23]<- "                                                                    8            `Yo   .8´       `8. `88888.   `8.`   .8´       `8. `88888.   8 888888888888"; 
-	
-	// Para hacer aparecer el logo gradualmente recorremos el arreglo 
-	Para i <- 1 Hasta 23 Hacer
-		Escribir "";
-		Borrar Pantalla;
-		para j <- 1 hasta i Hacer
-			Si j <= Longitud(logo[j]) Entonces
-				Escribir logo[j];
-			FinSi
-		FinPara
-		Esperar 150 Milisegundos;
-	FinPara
-	
-	
-	
-	// Para hacer desaparecer el logo gradualmente recorremos el arreglo de manera inversa
-	Para i <- 23 Hasta 1 Con Paso -1 Hacer
-		Borrar Pantalla;
-		Escribir ""; 
-		para j <- 1 hasta i Hacer
-			Si j <= Longitud(logo[j]) Entonces
-				Escribir logo[j];
-			FinSi
-		FinPara
-		Esperar 200 Milisegundos;
-	FinPara
-	Para i <- 1 Hasta 23 Hacer
-		Escribir logo[i];
-	FinPara
-	
-	// escribimos un mensaje para mejorar la experiencia del jugador
-	
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	Escribir "                                                              ***EL JUEGO COMIENZA***";
-	
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	Escribir "                                                            Presione Enter para continuar...";
-	Leer tecla;
-	
-Fin subProceso
-
 // En este subproceso damos inicio a la portada del juego
 
-SubProceso   textoEstatico
+SubProceso textoEstatico
 	
     definir tecla Como Caracter;
 	// Esta seria la pantalla inicial a modo de caratula 
@@ -186,8 +104,8 @@ SubAlgoritmo mostrarTableroJugador
 	para i <- 0 Hasta 9 Con Paso 1 Hacer
 		filaNumeros[i] <- i + 1 ;
 	FinPara
-
-
+	
+	
 	
 	// Lleno matriz del con 0
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
@@ -197,7 +115,7 @@ SubAlgoritmo mostrarTableroJugador
 		
 	FinPara
 	
-
+	
 	
 	//Muestro matrizJugador etaria bueno este mas centrada
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
@@ -291,21 +209,23 @@ SubAlgoritmo mostrarTableroEnemigo
 	balas <- 0;
 	destruir <- 0 ;
 	
-	Para i<- 0 hasta 9 Hacer
-		para j<-0 hasta 9 Hacer
+	Para i<- 0 hasta 10 Hacer
+		para j<-0 hasta 10 Hacer
 			M2[i,j] <- 0;
 		FinPara
 	FinPara
 	
 	
+	// Alijo al azar
 	
-	Para i<-1 Hasta 9 Hacer
-		x1 <-azar(9);
-		y1<- azar(9);
+	Para i<-1 Hasta 10 Hacer
+		x1 <-Aleatorio(1,9);
+		y1<- Aleatorio(1,9);
 		si M2[x1,y1] = 0 Entonces
-			M2[x1,y1] <- 2;
+			M2[x1,y1] <- 1;
 		FinSi
 	FinPara
+	
 	
 	Escribir "Ingrese numeros de disparo";
 	Leer balas;
@@ -339,7 +259,7 @@ SubAlgoritmo mostrarTableroEnemigo
 					Escribir Sin Saltar filaNumeros[j];
 					Escribir Sin Saltar "      ";
 				sino 
-					Escribir Sin Saltar "[",matrizEnemigo[i,j] , "]"; // aca hago un mas 1 al j para salterme la columna 0
+					Escribir Sin Saltar "[",M2[i,j+1] , "]"; // aca hago un mas 1 al j para salterme la columna 0
 					Escribir Sin Saltar "    ";
 				FinSi
 				
@@ -359,7 +279,7 @@ SubAlgoritmo mostrarTableroEnemigo
 		Escribir "***FELICITACIONES DESTROSO TODOS LOS BARCOS***";
 	FinSi
 FinSubAlgoritmo
-	
+
 
 
 	
