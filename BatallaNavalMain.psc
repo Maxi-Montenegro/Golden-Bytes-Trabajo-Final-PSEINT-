@@ -35,25 +35,25 @@ SubProceso Animacion
 	logo[2] <- "      8 8888    `88.        .888.         8 8888         .888.         8 8888         8 8888                 .888.";         
 	logo[3] <- "      8 8888     `88       :88888.        8 8888        :88888.        8 8888         8 8888                :88888.";        
 	logo[4] <- "      8 8888     ,88      . `88888.       8 8888       . `88888.       8 8888         8 8888               . `88888.";       
-	logo[5] <- "      8 8888.   ,88´     .8. `88888.      8 8888      .8. `88888.      8 8888         8 8888              .8. `88888.";      
+	logo[5] <- "      8 8888.   ,88Â´     .8. `88888.      8 8888      .8. `88888.      8 8888         8 8888              .8. `88888.";      
 	logo[6] <- "      8 8888888888      .8`8. `88888.     8 8888     .8`8. `88888.     8 8888         8 8888             .8`8. `88888.";     
-	logo[7] <- "      8 8888    `88.   .8´ `8. `88888.    8 8888    .8´ `8. `88888.    8 8888         8 8888            .8´ `8. `88888.";    
-	logo[8] <- "      8 8888      88  .8´   `8. `88888.   8 8888   .8´   `8. `88888.   8 8888         8 8888           .8´   `8. `88888.";   
-	logo[9] <- "      8 8888    ,88´ .888888888. `88888.  8 8888  .888888888. `88888.  8 8888         8 8888          .888888888. `88888.";  
-	logo[10]<- "      8 888888888P  .8´       `8. `88888. 8 8888. 8´       `8. `88888. 8 888888888888 8 888888888888 .8´       `8. `88888.";
+	logo[7] <- "      8 8888    `88.   .8Â´ `8. `88888.    8 8888    .8Â´ `8. `88888.    8 8888         8 8888            .8Â´ `8. `88888.";    
+	logo[8] <- "      8 8888      88  .8Â´   `8. `88888.   8 8888   .8Â´   `8. `88888.   8 8888         8 8888           .8Â´   `8. `88888.";   
+	logo[9] <- "      8 8888    ,88Â´ .888888888. `88888.  8 8888  .888888888. `88888.  8 8888         8 8888          .888888888. `88888.";  
+	logo[10]<- "      8 888888888P  .8Â´       `8. `88888. 8 8888. 8Â´       `8. `88888. 8 888888888888 8 888888888888 .8Â´       `8. `88888.";
 	logo[11]<- "                                    ";
 	logo[12]<- "                                    ";
 	logo[13]<- "                                    ";
-	logo[14]<- "                                                                    b.             8            .8.   `8.`888b           ,8´   .8.            8 8888";
-	logo[15]<- "                                                                    888o.          8           .888.   `8.`888b         ,8´   .888.           8 8888";
-	logo[16]<- "                                                                    Y88888o.       8          :88888.   `8.`888b       ,8´   :88888.          8 8888";
-	logo[17]<- "                                                                    .`Y888888o.    8         . `88888.   `8.`888b     ,8´   . `88888.         8 8888";
-	logo[18]<- "                                                                    8o. `Y888888o. 8        .8. `88888.   `8.`888b   ,8´   .8. `88888.        8 8888";
-	logo[19]<- "                                                                    8`Y8o. `Y88888o8       .8`8. `88888.   `8.`888b ,8´   .8`8. `88888.       8 8888";         
-	logo[20]<- "                                                                    8   `Y8o. `Y8888      .8´ `8. `88888.   `8.`888b8´   .8´ `8. `88888.      8 8888";
-	logo[21]<- "                                                                    8      `Y8o. `Y8     .8´   `8. `88888.   `8.`888´   .8´   `8. `88888.     8 8888";
-	logo[22]<- "                                                                    8         `Y8o.`    .888888888. `88888.   `8.`8´   .888888888. `88888.    8 8888";
-	logo[23]<- "                                                                    8            `Yo   .8´       `8. `88888.   `8.`   .8´       `8. `88888.   8 888888888888"; 
+	logo[14]<- "                                                                    b.             8            .8.   `8.`888b           ,8Â´   .8.            8 8888";
+	logo[15]<- "                                                                    888o.          8           .888.   `8.`888b         ,8Â´   .888.           8 8888";
+	logo[16]<- "                                                                    Y88888o.       8          :88888.   `8.`888b       ,8Â´   :88888.          8 8888";
+	logo[17]<- "                                                                    .`Y888888o.    8         . `88888.   `8.`888b     ,8Â´   . `88888.         8 8888";
+	logo[18]<- "                                                                    8o. `Y888888o. 8        .8. `88888.   `8.`888b   ,8Â´   .8. `88888.        8 8888";
+	logo[19]<- "                                                                    8`Y8o. `Y88888o8       .8`8. `88888.   `8.`888b ,8Â´   .8`8. `88888.       8 8888";         
+	logo[20]<- "                                                                    8   `Y8o. `Y8888      .8Â´ `8. `88888.   `8.`888b8Â´   .8Â´ `8. `88888.      8 8888";
+	logo[21]<- "                                                                    8      `Y8o. `Y8     .8Â´   `8. `88888.   `8.`888Â´   .8Â´   `8. `88888.     8 8888";
+	logo[22]<- "                                                                    8         `Y8o.`    .888888888. `88888.   `8.`8Â´   .888888888. `88888.    8 8888";
+	logo[23]<- "                                                                    8            `Yo   .8Â´       `8. `88888.   `8.`   .8Â´       `8. `88888.   8 888888888888"; 
 	
 	// Para hacer aparecer el logo gradualmente recorremos el arreglo 
 	Para i <- 1 Hasta 23 Hacer
@@ -97,12 +97,12 @@ SubProceso Animacion
 	Escribir "";
 	Escribir "                                                            Presione Enter para continuar...";
 	Leer tecla;
-	
-Fin subProceso
 
+	
+FinProceso
 // En este subproceso damos inicio a la portada del juego
 
-SubProceso   textoEstatico
+SubProceso textoEstatico
 	
     definir tecla Como Caracter;
 	// Esta seria la pantalla inicial a modo de caratula 
@@ -154,7 +154,7 @@ SubProceso MensajeBienvenida
 	Escribir "";
 	Escribir "";
 	Escribir "";
-	Escribir "                                                       ¡¡¡ Bienvenido Soldado !!!";
+	Escribir "                                                       Â¡Â¡Â¡ Bienvenido Soldado !!!";
 	Escribir "";
 	Escribir "                                              Estas Listo y preparado para esta Gran Aventura";
 	Escribir "";
@@ -162,7 +162,7 @@ SubProceso MensajeBienvenida
 	Escribir "                                                            Escribe Tu Nombre ";
 	leer nombre_jugador ;
 	Escribir "";
-	Escribir "                                            Perfecto soldado"," ", nombre_jugador, " ��� Que comience la Batalla !!!";
+	Escribir "                                            Perfecto soldado"," ", nombre_jugador, " ¡¡¡ Que comience la Batalla !!!";
 
 	Escribir "";
 	Escribir "";
@@ -186,10 +186,10 @@ SubAlgoritmo mostrarTableroJugador
 	
 	para i <- 0 Hasta 9 Con Paso 1 Hacer
 		filaNumeros[i] <- i + 1 ;
-		
+
 	FinPara 
-	
-	
+
+
 	// Lleno matriz del con 0
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		para j <- 0 Hasta 10 Con Paso 1 Hacer
@@ -199,11 +199,12 @@ SubAlgoritmo mostrarTableroJugador
 		
 	FinPara
 	
+
 	Escribir "Este es el tablero donde puede ubicar su flota"; 
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		Escribir "";                                 
 
-		Escribir Sin Saltar "                                        "; // aqui centr� la matriz margen de izquierda a derecha
+		Escribir Sin Saltar "                                        "; // aqui centré la matriz margen de izquierda a derecha
     
 		para j <- 0 Hasta 9 Con Paso 1 Hacer
 			//Escribir Sin Saltar "        "; //centrado de la matriz
@@ -225,7 +226,7 @@ SubAlgoritmo mostrarTableroJugador
 				FinSi
 				si matrizJugador[i,j] == 1 Entonces 
 
-					Escribir Sin Saltar "�"; // 
+					Escribir Sin Saltar "¶"; // 
 
 					Escribir Sin Saltar "     ";
 				FinSi
@@ -277,6 +278,148 @@ SubAlgoritmo Coordenadas
 		FinPara
 	FinPara
 	
+FinSubAlgoritmo
+
+// En este subproceso se ha creado una matriz que sera el tablero del enemigo
+
+SubAlgoritmo mostrarTableroEnemigo
+	
+	Definir matrizEnemigo, i,j, filaNumeros Como Entero;
+	Definir columnaLetras Como cadena;
+	Dimension matrizEnemigo[11,11], filaNumeros[10];
+	columnaLetras <- " ABCDEFGHIJ";
+	
+	// Lleno fila 0 con numeros del 1 al 10
+	para i <- 0 Hasta 9 Con Paso 1 Hacer
+		filaNumeros[i] <- i + 1 ;
+	FinPara
+	
+	
+	
+	// Lleno matriz del con 0
+	para i <- 0 Hasta 10 Con Paso 1 Hacer
+		para j <- 0 Hasta 10 Con Paso 1 Hacer
+			matrizEnemigo[i,j] <- 0;
+		FinPara
+		
+	FinPara
+	
+	
+	
+	//Muestro matrizEnemigo 
+	para i <- 0 Hasta 10 Con Paso 1 Hacer
+		Escribir "";
+		Escribir Sin Saltar "   ";
+		para j <- 0 Hasta 9 Con Paso 1 Hacer
+			si j == 0 Entonces // si true se muestra las letras
+				Escribir Sin Saltar Subcadena(columnaLetras, i, i);
+				Escribir Sin Saltar "    ";
+			FinSi
+			si i == 0 Entonces// si true muestro los numeros
+				Escribir Sin Saltar filaNumeros[j];
+				Escribir Sin Saltar "      ";
+			sino 
+				Escribir Sin Saltar "[",matrizEnemigo[i,j] , "]"; // aca hago un mas 1 al j para salterme la columna 0
+				Escribir Sin Saltar "    ";
+			FinSi
+			
+		FinPara
+		Escribir "";
+		
+	FinPara
+	
+	
+	
+	//esto de aca es un check necesitaba saber que quedo alineada
+	//Leer fila ; // loop check que sea string
+	
+	//-----------------------------------------------------------------------------------------------------------------------------
+	Definir cx,x1 Como Entero;
+	Definir cy ,y1 Como Entero;
+	Definir destruir Como Entero;
+	Definir balas Como Entero;
+	Definir M,M2 Como Entero ;
+	
+	
+	Dimension M2[11,11];
+	
+	balas <- 0;
+	destruir <- 0 ;
+	
+	Para i<- 0 hasta 10 Hacer
+		para j<-0 hasta 10 Hacer
+			M2[i,j] <- 0;
+		FinPara
+	FinPara
+	
+	
+	// Alijo al azar
+	
+	Para i<-1 Hasta 10 Hacer
+		x1 <-Aleatorio(1,9);
+		y1<- Aleatorio(1,9);
+		si M2[x1,y1] = 0 Entonces
+			M2[x1,y1] <- 1;
+		FinSi
+	FinPara
+	
+	
+	Escribir "Ingrese numeros de disparo";
+	Leer balas;
+	
+	Repetir
+		Escribir "Ingrese coordenada x del disparo(entre 0 al 9)";
+		Leer cx;
+		Escribir "Ingrese coordenada y del disparo(entre 0 al 9)";
+		Leer cy;
+		
+		balas<- balas-1;
+		// Cuando da a u nbarco marca 1 y cuando cae al agua marca 2 
+		Si M2[cx,cy]=2 Entonces
+			Escribir "HA DADO EN EL BARCO";
+			matrizEnemigo[cx,cy] <- 1;
+			destruir<- destruir + 1;
+		SiNo
+			Escribir "                              --Disparo Al Mar--";
+			matrizEnemigo[cx,cy] <- 2;
+		FinSi
+		Escribir "";
+		para i <- 0 Hasta 10 Con Paso 1 Hacer
+			Escribir "";
+			Escribir Sin Saltar "   ";
+			para j <- 0 Hasta 9 Con Paso 1 Hacer
+				si j == 0 Entonces // si true se muestra las letras
+					Escribir Sin Saltar Subcadena(columnaLetras, i, i);
+					Escribir Sin Saltar "    ";
+				FinSi
+				si i == 0 Entonces// si true muestro los numeros
+					Escribir Sin Saltar filaNumeros[j];
+					Escribir Sin Saltar "      ";
+				sino 
+					Escribir Sin Saltar "[",M2[i,j+1] , "]"; // aca hago un mas 1 al j para salterme la columna 0
+					Escribir Sin Saltar "    ";
+				FinSi
+				
+			FinPara
+			Escribir "";
+			
+		FinPara
+		Escribir "";
+		Escribir "------------------------------------------------------------------------------------------------------------------";
+		Escribir "Le quedan ",balas," disparos";
+		Escribir "Barcos destruidos :", destruir;
+	Hasta Que destruir = 3 o balas = 0
+	
+	Si destruir < 3 y balas =0 Entonces
+		Escribir "PERDIO";
+	SiNo
+		Escribir "***FELICITACIONES DESTROSO TODOS LOS BARCOS***";
+	FinSi
+FinSubAlgoritmo
+
+
+
+
 	// Colocar barcos aleatoriamente
 	// Ejemplo: Colocar 5 barcos (1 en cada fila)
 	Para i <- 1 Hasta 5 Hacer
@@ -319,10 +462,10 @@ SubAlgoritmo Coordenadas
 		FinSi
 		Si matriz[fila, columna] = 1 Entonces
 			Escribir "Genial soldado, le diste al Barco";
-			matriz[fila, columna] <- 2; // 2 representa barco dañado
+			matriz[fila, columna] <- 2; // 2 representa barco daÃ±ado
 		SiNo
 			Si matriz[fila, columna] = 2 Entonces
-				Escribir "Ya has atacado aqui, el barco ya esta deñado";
+				Escribir "Ya has atacado aqui, el barco ya esta deÃ±ado";
 			FinSi
 		FinSi
 		
