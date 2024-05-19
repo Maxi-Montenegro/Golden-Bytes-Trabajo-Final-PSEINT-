@@ -158,7 +158,11 @@ SubProceso MensajeBienvenida
 	Escribir "                                                            Escribe Tu Nombre ";
 	leer nombre_jugador ;
 	Escribir "";
+<<<<<<< HEAD
+	Escribir "                                            Perfecto soldado"," ", nombre_jugador, " ¡¡¡ Que comience la Batalla !!!";
+=======
 	Escribir "                                            Perfecto soldado"," ", nombre_jugador, " Â¡Â¡Â¡ Que comience la Batalla !!!";
+>>>>>>> f87cf61c6cb0cc5280a67e4d019d82a8d34c53c4
 	ESCRIBIR "";
 	Escribir "";
 	
@@ -171,18 +175,24 @@ SubProceso MensajeBienvenida
 	
 FinSubProceso
 
-// En este subproceso se ha creado una matriz que sera el tablero del juego
-
 SubAlgoritmo mostrarTableroJugador
 	Definir matrizJugador, i,j, filaNumeros Como Entero;
 	Definir columnaLetras Como cadena;
 	Dimension matrizJugador[11,11], filaNumeros[10];
 	columnaLetras <- " ABCDEFGHIJ";
+<<<<<<< HEAD
+		
+	Dimension map[10,10];
+		
+	para i <- 0 Hasta 9 Con Paso 1 Hacer
+				
+=======
 	
 	Dimension map[10,10];
 	
 	para i <- 0 Hasta 9 Con Paso 1 Hacer
 		
+>>>>>>> f87cf61c6cb0cc5280a67e4d019d82a8d34c53c4
 		filaNumeros[i] <- i + 1 ;
 		
 	FinPara 
@@ -200,7 +210,11 @@ SubAlgoritmo mostrarTableroJugador
 	
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		Escribir "";                                 
+<<<<<<< HEAD
+		Escribir Sin Saltar "                                        "; // aqui centré la matriz margen de izquierda a derecha
+=======
 		Escribir Sin Saltar "                                        "; // aqui centrÃ© la matriz margen de izquierda a derecha
+>>>>>>> f87cf61c6cb0cc5280a67e4d019d82a8d34c53c4
 		para j <- 0 Hasta 9 Con Paso 1 Hacer
 			//Escribir Sin Saltar "        "; //centrado de la matriz
 			si j == 0 Entonces // si true se muestra las letras
@@ -220,7 +234,11 @@ SubAlgoritmo mostrarTableroJugador
 					Escribir Sin Saltar "     "; // separacion del simbolo agua
 				FinSi
 				si matrizJugador[i,j] == 1 Entonces 
+<<<<<<< HEAD
+					Escribir Sin Saltar "¶"; // 
+=======
 					Escribir Sin Saltar "Â¶"; // 
+>>>>>>> f87cf61c6cb0cc5280a67e4d019d82a8d34c53c4
 					Escribir Sin Saltar "     ";
 				FinSi
 				si matrizJugador[i,j] == 2 Entonces 
@@ -235,4 +253,9 @@ SubAlgoritmo mostrarTableroJugador
 		
 	FinPara
 FinSubAlgoritmo
+<<<<<<< HEAD
+
 	
+=======
+	
+>>>>>>> f87cf61c6cb0cc5280a67e4d019d82a8d34c53c4
