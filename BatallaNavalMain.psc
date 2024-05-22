@@ -5,18 +5,20 @@
 
 
 Proceso BatallaNavalMain
-	//ESTAS VARIABLES  O AL MENOS LAS MATRIZ JUGADOR Y ENEMIGO VAN A TENER QUE SER PASADSA POR REFERENCIA a los otrso sub algoritomos
+	//ESTAS VARIABLES  O AL MENOS LAS MATRIZ JUGADOR Y ENEMIGO VAN A TENER QUE SER PASAR POR REFERENCIA a los otrso sub algoritomos
 	Definir matrizJugador, filaNumeros Como Entero;
 	Definir columnaLetras Como cadena;
 	Dimension matrizJugador[11,11], filaNumeros[10];
 	columnaLetras <- " ABCDEFGHIJ";
 	
-//	textoEstatico();
-//	Borrar Pantalla;
-//	Animacion();
-//	Borrar Pantalla;
-//	MensajeBienvenida();
-//	Borrar Pantalla;
+	mensajeAmpliarPantalla();
+	Borrar Pantalla;
+	textoEstatico();
+	Borrar Pantalla;
+	Animacion();
+	Borrar Pantalla;
+	MensajeBienvenida();
+	Borrar Pantalla;
 	mostrarTableroJugador();
 	IngresarPosicionBarcoJugador();
 	mostrarTableroJugador();
@@ -24,6 +26,17 @@ Proceso BatallaNavalMain
 	Coordenadas();
 	
 FinProceso
+
+SubAlgoritmo mensajeAmpliarPantalla
+	
+	Definir tecla Como Caracter;
+	Escribir "                    PARA UNA MEJOR EXPERIENCIA DE JUEGO";
+	Escribir "                 ABRA A PANTALLA COMPLETA Y PRESIONE ENTER";
+	Leer TECLA;
+	
+FinSubAlgoritmo
+
+
 
 // Eset subproceso es una animacion que muestra el nombre de nuestro juego
 SubProceso Animacion
@@ -95,12 +108,12 @@ SubProceso Animacion
 	Escribir "";
 	Escribir "";
 	Escribir "";
-	Escribir "                                                              ***EL JUEGO COMIENZA***";
+	Escribir "                                                                                ***EL JUEGO COMIENZA***";
 	
 	Escribir "";
 	Escribir "";
 	Escribir "";
-	Escribir "                                                            Presione Enter para continuar...";
+	Escribir "                                                                              Presione Enter para continuar...";
 	Leer tecla;
 
 	
@@ -117,33 +130,33 @@ SubProceso textoEstatico
 	Escribir "";
 	Escribir "";
 	Escribir "";
-	Escribir "                                                         Universidad Tecnologica Nacional";
+	Escribir "                                                                            Universidad Tecnologica Nacional";
 	Escribir "";
-	Escribir "                                                           Facultad Regional San Rafael";
+	Escribir "                                                                              Facultad Regional San Rafael";
 	Escribir "";
 	Escribir "";
-	Escribir "                                                               Proyecto Integrador";
+	Escribir "                                                                                  Proyecto Integrador";
 	Escribir "";
-	Escribir "                                                                T.U.P COHORTE 2024"; 
+	Escribir "                                                                                  T.U.P COHORTE 2024"; 
 	
 	Escribir "";
 	Escribir "";
 	Escribir "";
 	
-	Escribir "                                   ............................................................................. ";
-    Escribir "                                   ............................................................................. ";
-    Escribir "                                   ............................................................................. ";
-    Escribir "                                   ... GOLDEN       ****  ****  ****    **    ****  *    *  *****      *     ... ";
-    Escribir "                                   ...      BYTES   *  *  *  *  *      *   *  *     * *  *    *       * *    ... ";
-    Escribir "                                   ...              ****  ****  ***      \    ***   *  * *    *      *   *   ... ";
-    Escribir "                                   ...              *     * *   *     *   *   *     *    *    *     *******  ... ";
-    Escribir "                                   ...              *     *  *  ****    **    ****  *    *    *    *       * ... ";
-    Escribir "                                   ............................................................................. ";
-    Escribir "                                   ............................................................................. ";
-    Escribir "                                   ............................................................................. ";
+	Escribir "                                                     ............................................................................. ";
+    Escribir "                                                     ............................................................................. ";
+    Escribir "                                                     ............................................................................. ";
+    Escribir "                                                     ... GOLDEN       ****  ****  ****    **    ****  *    *  *****      *     ... ";
+    Escribir "                                                     ...      BYTES   *  *  *  *  *      *   *  *     * *  *    *       * *    ... ";
+    Escribir "                                                     ...              ****  ****  ***      \    ***   *  * *    *      *   *   ... ";
+    Escribir "                                                     ...              *     * *   *     *   *   *     *    *    *     *******  ... ";
+    Escribir "                                                     ...              *     *  *  ****    **    ****  *    *    *    *       * ... ";
+    Escribir "                                                     ............................................................................. ";
+    Escribir "                                                     ............................................................................. ";
+    Escribir "                                                     ............................................................................. ";
 	Escribir "";
 	Escribir "";
-    Escribir "                                                         Presione Enter para continuar...";
+    Escribir "                                                                       Presione Enter para continuar...";
     Leer tecla;
 	
 	
@@ -160,20 +173,20 @@ SubProceso MensajeBienvenida
 	Escribir "";
 	Escribir "";
 	Escribir "";
-	Escribir "                                                       Â¡Â¡Â¡ Bienvenido Soldado !!!";
+	Escribir "                                                                              ¡ Bienvenido Soldado !!!";
 	Escribir "";
-	Escribir "                                              Estas Listo y preparado para esta Gran Aventura";
+	Escribir "                                                                   Estas Listo y preparado para esta Gran Aventura";
 	Escribir "";
-	Escribir "                                                            Presentate Soldado ";
-	Escribir "                                                            Escribe Tu Nombre ";
+	Escribir "                                                                                 Presentate Soldado ";
+	Escribir "                                                                                 Escribe Tu Nombre ";
 	leer nombre_jugador ;
 	Escribir "";
-	Escribir "                                            Perfecto soldado"," ", nombre_jugador, " ¡¡¡ Que comience la Batalla !!!";
+	Escribir "                                                             Perfecto soldado"," ", nombre_jugador, " ¡¡¡ Que comience la Batalla !!!";
 
 	Escribir "";
 	Escribir "";
 	
-	Escribir "                                                        Pesione Enter para continuar...";
+	Escribir "                                                                           Pesione Enter para continuar...";
 	leer tecla;
 	Escribir "";
 	Escribir "";
