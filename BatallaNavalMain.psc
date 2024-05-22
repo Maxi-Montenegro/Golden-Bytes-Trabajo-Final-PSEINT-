@@ -102,7 +102,7 @@ SubProceso Animacion
 	Escribir "";
 	Escribir "                                                            Presione Enter para continuar...";
 	Leer tecla;
-
+	
 	
 FinSubProceso
 
@@ -169,7 +169,7 @@ SubProceso MensajeBienvenida
 	leer nombre_jugador ;
 	Escribir "";
 	Escribir "                                            Perfecto soldado"," ", nombre_jugador, " ¡¡¡ Que comience la Batalla !!!";
-
+	
 	Escribir "";
 	Escribir "";
 	
@@ -191,10 +191,10 @@ SubAlgoritmo mostrarTableroJugador
 	
 	para i <- 0 Hasta 9 Con Paso 1 Hacer
 		filaNumeros[i] <- i + 1 ;
-
+		
 	FinPara 
-
-
+	
+	
 	// Lleno matriz del con 0
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		para j <- 0 Hasta 10 Con Paso 1 Hacer
@@ -204,13 +204,13 @@ SubAlgoritmo mostrarTableroJugador
 		
 	FinPara
 	
-
+	
 	Escribir "Este es su tablero"; 
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		Escribir "";                                 
-
+		
 		Escribir Sin Saltar "                                        "; // aqui centré la matriz margen de izquierda a derecha
-    
+		
 		para j <- 0 Hasta 9 Con Paso 1 Hacer
 			//Escribir Sin Saltar "        "; //centrado de la matriz
 			si j == 0 Entonces // si true se muestra las letras
@@ -230,9 +230,9 @@ SubAlgoritmo mostrarTableroJugador
 					Escribir Sin Saltar "     "; // separacion del simbolo agua
 				FinSi
 				si matrizJugador[i,j] == 1 Entonces 
-
+					
 					Escribir Sin Saltar "¶"; // 
-
+					
 					Escribir Sin Saltar "     ";
 				FinSi
 				si matrizJugador[i,j] == 2 Entonces 
@@ -250,9 +250,58 @@ FinSubAlgoritmo
 
 SubAlgoritmo IngresarPosicionBarcoJugador
 	Escribir "ingrese la posicion horizontal donde ubicar su barco";
-
+	
 FinSubAlgoritmo
 
+SubAlgoritmo  colocar_barco
+	Definir  posicion, i Como Entero;
+	Definir arregloLetras, dato, aux Como Caracter;
+	Definir columnaLetras como cadena;
+	Definir encontrado Como Logico;
+	Dimension arregloLetras(11);
+	columnaLetras <- " ABCDEFGHIJ";
+	// Solicitar columna y fila al usuario
+	Escribir "elija en que columna quiere colocar su barco ";
+	Leer columna;
+	Escribir "elija en que fila quiere colocar su barco ";
+	Leer dato;
+	encontrado <- falso;
+	i<-0;
+	// Busqueda secuencial
+	mientras (i<10 y encontrado = Falso ) Hacer
+		Si (arregloLetras[i] = dato) Entonces
+			encontrado <- Verdadero;
+			fila <- i;
+		FinSi
+		i <- i +1;
+	FinMientras
+	
+	Definir matrizJugador, i,j, filaNumeros Como Entero;
+	Definir columnaLetras Como cadena;
+	Dimension matrizJugador[11,11], filaNumeros[10];
+	columnaLetras <- " ABCDEFGHIJ";
+	
+	// Colocamos el barco de 3
+	si columna = 10;
+		matrizJugador[fila, columna-2] = 1;
+		matrizjugador[fila, columna-1] = 1;
+		matrizjugador[fila, columna] = 1;
+	SiNo
+		matrizjugador[fila, columna+2] = 1;
+		matrizjugador[fila, columna+1] = 1;
+		matrizjugador[fila, columna] = 1;
+		
+	FinSi
+	
+	// Mostrar matriz con el barco
+	Escribir "Matriz el barco a sido colocado en la siguiente ubicacion ("  fila  "," columna "):";
+	Para i = 1 Hasta 10;
+		Para j = 1 Hasta 10;
+			Escribir sin saltar matrizjugador[i,j], " ";
+		FinPara;
+		Escribir "";
+	FinPara
+FinSubProceso
 
 SubAlgoritmo Coordenadas
 	Definir matriz Como Entero;

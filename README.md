@@ -3,6 +3,8 @@ Reporsitorio para el Trabajo Final en PSEINT para el equipo Golden Bytes . Para 
 
 Integrantes
 
+-landi felipe
+
 -Maxi Montenegro
 
 -Ezequiel Quiroz
