@@ -491,7 +491,7 @@ SubAlgoritmo mostrarMatrizEnemigo
 	FinSi
 FinSubAlgoritmo
 
-SubAlgoritmo finDelJuego(nombre_jugador)
+SubAlgoritmo finDelJuego(nombre_jugador por referencia)
     // Mostrar mensaje de agradecimiento al usuario
     Escribir "¡Gracias por jugar, ", nombre_jugador, "!Esperamos que hayas disfrutado del juego.";
     Escribir "Recuerda: Si lo puedes imaginar, lo pudes programar.";
