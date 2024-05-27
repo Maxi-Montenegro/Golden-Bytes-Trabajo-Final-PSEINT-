@@ -6,10 +6,11 @@
 
 Proceso BatallaNavalMain
 	//ESTAS VARIABLES  O AL MENOS LAS MATRIZ JUGADOR Y ENEMIGO VAN A TENER QUE SER PASAR POR REFERENCIA a los otrso sub algoritomos
-	Definir matrizJugador, filaNumeros Como Entero;
-	Definir columnaLetras Como cadena;
-	Dimension matrizJugador[11,11], filaNumeros[10];
-	columnaLetras <- " ABCDEFGHIJ";
+	Definir matrizJugador Como Entero;
+	Dimension matrizJugador[11,11];
+	Definir nombre_jugador Como Caracter;
+	Definir matrizEnemigo Como Entero;
+	Dimension matrizEnemigo[11,11];
 	
 	mensajeAmpliarPantalla();
 	Borrar Pantalla;
@@ -17,15 +18,16 @@ Proceso BatallaNavalMain
 	Borrar Pantalla;
 	Animacion();
 	Borrar Pantalla;
-	MensajeBienvenida();
+	MensajeBienvenida(Nombre_Jugador);
 	Borrar Pantalla;
-	mostrarTableroJugador();
-	IngresarPosicionBarcoJugador();
-	mostrarTableroJugador();
-	//mostrarMatrizEnemigo();
-	Coordenadas();
+	mostrarTableroJugador(matrizJugador);
+	Borrar Pantalla;
+//	IngresarPosicionBarcoJugador();
+	mostrarTableroJugadorEnemigo(matrizJugador, matrizEnemigo);
+//	mostrarMatrizEnemigo();
+	//Coordenadas();
 	//Mostra mensaje de agradecimiento al final del juego
-	finDelJuego();
+	finDelJuego(nombre_jugador);
 	
 FinProceso
 
@@ -55,25 +57,25 @@ SubProceso Animacion
 	logo[2] <- "      8 8888    `88.        .888.         8 8888         .888.         8 8888         8 8888                 .888.";         
 	logo[3] <- "      8 8888     `88       :88888.        8 8888        :88888.        8 8888         8 8888                :88888.";        
 	logo[4] <- "      8 8888     ,88      . `88888.       8 8888       . `88888.       8 8888         8 8888               . `88888.";       
-	logo[5] <- "      8 8888.   ,88ï¿½     .8. `88888.      8 8888      .8. `88888.      8 8888         8 8888              .8. `88888.";      
+	logo[5] <- "      8 8888.   ,88?     .8. `88888.      8 8888      .8. `88888.      8 8888         8 8888              .8. `88888.";      
 	logo[6] <- "      8 8888888888      .8`8. `88888.     8 8888     .8`8. `88888.     8 8888         8 8888             .8`8. `88888.";     
-	logo[7] <- "      8 8888    `88.   .8ï¿½ `8. `88888.    8 8888    .8ï¿½ `8. `88888.    8 8888         8 8888            .8ï¿½ `8. `88888.";    
-	logo[8] <- "      8 8888      88  .8ï¿½   `8. `88888.   8 8888   .8ï¿½   `8. `88888.   8 8888         8 8888           .8ï¿½   `8. `88888.";   
-	logo[9] <- "      8 8888    ,88ï¿½ .888888888. `88888.  8 8888  .888888888. `88888.  8 8888         8 8888          .888888888. `88888.";  
-	logo[10]<- "      8 888888888P  .8ï¿½       `8. `88888. 8 8888. 8ï¿½       `8. `88888. 8 888888888888 8 888888888888 .8ï¿½       `8. `88888.";
+	logo[7] <- "      8 8888    `88.   .8? `8. `88888.    8 8888    .8? `8. `88888.    8 8888         8 8888            .8? `8. `88888.";    
+	logo[8] <- "      8 8888      88  .8?   `8. `88888.   8 8888   .8?   `8. `88888.   8 8888         8 8888           .8?   `8. `88888.";   
+	logo[9] <- "      8 8888    ,88? .888888888. `88888.  8 8888  .888888888. `88888.  8 8888         8 8888          .888888888. `88888.";  
+	logo[10]<- "      8 888888888P  .8?       `8. `88888. 8 8888. 8?       `8. `88888. 8 888888888888 8 888888888888 .8?       `8. `88888.";
 	logo[11]<- "                                    ";
 	logo[12]<- "                                    ";
 	logo[13]<- "                                    ";
-	logo[14]<- "                                                                    b.             8            .8.   `8.`888b           ,8ï¿½   .8.            8 8888";
-	logo[15]<- "                                                                    888o.          8           .888.   `8.`888b         ,8ï¿½   .888.           8 8888";
-	logo[16]<- "                                                                    Y88888o.       8          :88888.   `8.`888b       ,8ï¿½   :88888.          8 8888";
-	logo[17]<- "                                                                    .`Y888888o.    8         . `88888.   `8.`888b     ,8ï¿½   . `88888.         8 8888";
-	logo[18]<- "                                                                    8o. `Y888888o. 8        .8. `88888.   `8.`888b   ,8ï¿½   .8. `88888.        8 8888";
-	logo[19]<- "                                                                    8`Y8o. `Y88888o8       .8`8. `88888.   `8.`888b ,8ï¿½   .8`8. `88888.       8 8888";         
-	logo[20]<- "                                                                    8   `Y8o. `Y8888      .8ï¿½ `8. `88888.   `8.`888b8ï¿½   .8ï¿½ `8. `88888.      8 8888";
-	logo[21]<- "                                                                    8      `Y8o. `Y8     .8ï¿½   `8. `88888.   `8.`888ï¿½   .8ï¿½   `8. `88888.     8 8888";
-	logo[22]<- "                                                                    8         `Y8o.`    .888888888. `88888.   `8.`8ï¿½   .888888888. `88888.    8 8888";
-	logo[23]<- "                                                                    8            `Yo   .8ï¿½       `8. `88888.   `8.`   .8ï¿½       `8. `88888.   8 888888888888";
+	logo[14]<- "                                                                    b.             8            .8.   `8.`888b           ,8?   .8.            8 8888";
+	logo[15]<- "                                                                    888o.          8           .888.   `8.`888b         ,8?   .888.           8 8888";
+	logo[16]<- "                                                                    Y88888o.       8          :88888.   `8.`888b       ,8?   :88888.          8 8888";
+	logo[17]<- "                                                                    .`Y888888o.    8         . `88888.   `8.`888b     ,8?   . `88888.         8 8888";
+	logo[18]<- "                                                                    8o. `Y888888o. 8        .8. `88888.   `8.`888b   ,8?   .8. `88888.        8 8888";
+	logo[19]<- "                                                                    8`Y8o. `Y88888o8       .8`8. `88888.   `8.`888b ,8?   .8`8. `88888.       8 8888";         
+	logo[20]<- "                                                                    8   `Y8o. `Y8888      .8? `8. `88888.   `8.`888b8?   .8? `8. `88888.      8 8888";
+	logo[21]<- "                                                                    8      `Y8o. `Y8     .8?   `8. `88888.   `8.`888?   .8?   `8. `88888.     8 8888";
+	logo[22]<- "                                                                    8         `Y8o.`    .888888888. `88888.   `8.`8?   .888888888. `88888.    8 8888";
+	logo[23]<- "                                                                    8            `Yo   .8?       `8. `88888.   `8.`   .8?       `8. `88888.   8 888888888888";
 	
 	// Para hacer aparecer el logo gradualmente recorremos el arreglo 
 	Para i <- 1 Hasta 23 Hacer
@@ -166,16 +168,16 @@ FinSubProceso
 
 // Aqui Damos un Mensaje de Bienvenida al Jugador 
 
-SubProceso MensajeBienvenida
+SubProceso MensajeBienvenida (nombre_jugador Por Referencia)
 	
-	definir Nombre_Jugador, tecla Como Caracter; 
+	Definir tecla Como Caracter;
 	
 	Escribir "";
 	Escribir "";
 	Escribir "";
 	Escribir "";
 	Escribir "";
-	Escribir "                                                                              ï¿½ Bienvenido Soldado !!!";
+	Escribir "                                                                              ? Bienvenido Soldado !!!";
 	Escribir "";
 	Escribir "                                                                   Estas Listo y preparado para esta Gran Aventura";
 	Escribir "";
@@ -183,7 +185,7 @@ SubProceso MensajeBienvenida
 	Escribir "                                                                                 Escribe Tu Nombre ";
 	leer nombre_jugador ;
 	Escribir "";
-	Escribir "                                                             Perfecto soldado"," ", nombre_jugador, " ï¿½ï¿½ï¿½ Que comience la Batalla !!!";
+	Escribir "                                                             Perfecto soldado"," ", nombre_jugador, " ??? Que comience la Batalla !!!";
 
 	Escribir "";
 	Escribir "";
@@ -197,76 +199,112 @@ SubProceso MensajeBienvenida
 	
 FinSubProceso
 
-SubAlgoritmo mostrarTableroJugador
-	Definir matrizJugador, i,j, filaNumeros Como Entero;
+SubAlgoritmo mostrarTableroJugador(matrizJugador Por Referencia)
+	Definir i,j, filaNumeros Como Entero;
 	Definir columnaLetras Como cadena;
-	Dimension matrizJugador[11,11], filaNumeros[10];
 	columnaLetras <- " ABCDEFGHIJ";
-	
+	Dimension filaNumeros[10];
+	Definir tecla Como Caracter;
 	
 	para i <- 0 Hasta 9 Con Paso 1 Hacer
 		filaNumeros[i] <- i + 1 ;
 
 	FinPara 
 
-
+	Escribir "Este es su tablero piense en donde ubicar sus barcos"; 
 	// Lleno matriz del con 0
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		para j <- 0 Hasta 10 Con Paso 1 Hacer
-			Escribir Sin Saltar "         "; //centrado de la matriz margen superior
+			Escribir Sin Saltar "    "; //centrado de la matriz margen superior
 			matrizJugador[i,j] <- 0;
 		FinPara
 		
 	FinPara
 	
-
-	Escribir "Este es su tablero"; 
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
-		Escribir "";                                 
-
-		Escribir Sin Saltar "                                        "; // aqui centrï¿½ la matriz margen de izquierda a derecha
-    
-		para j <- 0 Hasta 9 Con Paso 1 Hacer
-			//Escribir Sin Saltar "        "; //centrado de la matriz
-			si j == 0 Entonces // si true se muestra las letras
-				Escribir Sin Saltar Subcadena(columnaLetras, i, i);
-				Escribir Sin Saltar "     ";// separacion de la matris de las primera columna
-			FinSi
-			si i == 0 Entonces// si true muestro los numeros
-				Escribir Sin Saltar filaNumeros[j];
-				Escribir Sin Saltar "     "; // separacion entre los numeros
-			sino 
-				si matrizJugador[i,j] == -1 Entonces 
-					Escribir Sin Saltar "~"; // 
-					Escribir Sin Saltar "     ";
-				FinSi
-				si matrizJugador[i,j] == 0 Entonces 
-					Escribir Sin Saltar "~"; // 
-					Escribir Sin Saltar "     "; // separacion del simbolo agua
-				FinSi
-				si matrizJugador[i,j] == 1 Entonces 
-
-					Escribir Sin Saltar "ï¿½"; // 
-
-					Escribir Sin Saltar "     ";
-				FinSi
-				si matrizJugador[i,j] == 2 Entonces 
-					Escribir Sin Saltar "*"; // 
-					Escribir Sin Saltar "     ";
-				FinSi
-				
-			FinSi
-			
-		FinPara
+		Escribir ""; 
+		mostrarValor(matrizJugador, columnaLetras, filaNumeros, i);	//llamo a la funcion para mostrar una matriz
 		Escribir "";
-		
 	FinPara
+	Escribir "";
+	Escribir "                                                                           Presione Enter para continuar...";
+	leer tecla;
 FinSubAlgoritmo
 
 SubAlgoritmo IngresarPosicionBarcoJugador
 	Escribir "ingrese la posicion horizontal donde ubicar su barco";
 
 FinSubAlgoritmo
+
+SubAlgoritmo mostrarTableroJugadorEnemigo(matrizJugador Por Referencia, matrizEnemigo Por Referencia)
+	Definir i,j, filaNumeros Como Entero;
+	Definir columnaLetras Como cadena;
+	columnaLetras <- " ABCDEFGHIJ";
+	Dimension filaNumeros[10];
+	Definir tecla Como Caracter;
+	
+	para i <- 0 Hasta 9 Con Paso 1 Hacer
+		filaNumeros[i] <- i + 1 ;
+		
+	FinPara 
+	
+	Escribir "Este es su tablero                                                                        Este es el tablero del enemigo"; 
+	// Lleno matriz enemigo con del con 0 REMOVER DESP
+	para i <- 0 Hasta 10 Con Paso 1 Hacer
+		para j <- 0 Hasta 10 Con Paso 1 Hacer
+			Escribir Sin Saltar "    "; //centrado de la matriz margen superior
+			matrizJugador[i,j] <- 0 ;
+			matrizEnemigo[i,j] <- Aleatorio(-1,2) ; //REMOVER ESTO PARA  LOS OTROS SUBALGORITOMOS
+		FinPara
+		
+	FinPara
+	
+	para i <- 0 Hasta 10 Con Paso 1 Hacer
+		Escribir ""; 
+		mostrarValor(matrizJugador, columnaLetras, filaNumeros, i);	//llamo a la funcion para mostrar una matriz
+		mostrarValor(matrizEnemigo, columnaLetras, filaNumeros, i);	
+		Escribir "";
+	FinPara
+	
+	Escribir "";
+	Escribir "                                                                           Presione Enter para continuar...";
+	leer tecla;
+FinSubAlgoritmo
+
+SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, filaNumeros Por Referencia, i Por Valor)
+	Definir j Como Entero;
+	
+	Escribir Sin Saltar "             "; // aqui centr? la matriz margen de izquierda a derecha
+	Escribir Sin Saltar Subcadena(columnaLetras, i, i);
+	Escribir Sin Saltar "     ";// separacion de la matris de las primera columna	
+	
+	para j<-0 Hasta 9 Con Paso 1 Hacer
+		si i == 0 Entonces// si true muestro los numeros
+			Escribir Sin Saltar filaNumeros[j];
+			Escribir Sin Saltar "     "; // separacion entre los numeros
+		sino 
+			//Aqui imprimimos matriz 
+			si matriz[i,j+1] == -1 Entonces 
+				Escribir Sin Saltar "~"; // 
+				Escribir Sin Saltar "     ";
+			FinSi
+			si matriz[i,j+1] == 0 Entonces 
+				Escribir Sin Saltar "~"; // 
+				Escribir Sin Saltar "     "; // separacion del simbolo agua
+			FinSi
+			si matriz[i,j+1] == 1 Entonces 
+				
+				Escribir Sin Saltar "¶"; // 
+				Escribir Sin Saltar "     ";
+			FinSi
+			si matriz[i,j+1] == 2 Entonces 
+				Escribir Sin Saltar "*"; // 
+				Escribir Sin Saltar "     ";
+			FinSi
+		FinSi
+	FinPara
+	
+FinSubAlgoritmo	
 
 
 SubAlgoritmo Coordenadas
@@ -332,10 +370,10 @@ SubAlgoritmo Coordenadas
 		FinSi
 		Si matriz[fila, columna] = 1 Entonces
 			Escribir "Genial soldado, le diste al Barco";
-			matriz[fila, columna] <- 2; // 2 representa barco daÃ±ado
+			matriz[fila, columna] <- 2; // 2 representa barco dañado
 		SiNo
 			Si matriz[fila, columna] = 2 Entonces
-				Escribir "Ya has atacado aqui, el barco ya esta deÃ±ado";
+				Escribir "Ya has atacado aqui, el barco ya esta deñado";
 			FinSi
 		FinSi
 		
@@ -493,7 +531,7 @@ FinSubAlgoritmo
 
 SubAlgoritmo finDelJuego(nombre_jugador por referencia)
     // Mostrar mensaje de agradecimiento al usuario
-    Escribir "Â¡Gracias por jugar, ", nombre_jugador, "!Esperamos que hayas disfrutado del juego.";
+    Escribir "¡Gracias por jugar, ", nombre_jugador, " !Esperamos que hayas disfrutado del juego.";
     Escribir "Recuerda: Si lo puedes imaginar, lo pudes programar.";
 	Escribir "Ariel Bentancud";
 FinSubAlgoritmo
