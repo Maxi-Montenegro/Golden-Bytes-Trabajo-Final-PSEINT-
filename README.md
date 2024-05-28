@@ -7,8 +7,6 @@ Integrantes
 
 -Ezequiel Quiroz
 
--Jesus Gomez
-
 -Irene Machuca
 
 -Franco Poblete
