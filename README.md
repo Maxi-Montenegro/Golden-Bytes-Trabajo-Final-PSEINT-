@@ -14,3 +14,5 @@ Integrantes
 -Valentin Felipe
 
 -Landi Felipe
+
+-Leonardo Gómez
