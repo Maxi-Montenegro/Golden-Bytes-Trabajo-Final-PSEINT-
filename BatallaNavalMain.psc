@@ -22,7 +22,7 @@ Proceso BatallaNavalMain
 	Borrar Pantalla;
 	mostrarTableroJugador(matrizJugador);
 	Borrar Pantalla;
-//	IngresarPosicionBarcoJugador();
+	IngresarPosicionBarcoJugador(matrizJugador);
 	mostrarTableroJugadorEnemigo(matrizJugador, matrizEnemigo);
 //	mostrarMatrizEnemigo();
 	//Coordenadas();
@@ -231,13 +231,12 @@ SubAlgoritmo mostrarTableroJugador(matrizJugador Por Referencia)
 	leer tecla;
 FinSubAlgoritmo
 
-SubAlgoritmo IngresarPosicionBarcoJugador
+SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
 	Escribir "ingrese la posicion horizontal donde ubicar su barco";
 	Definir posicion, columna, fila, i, j como Entero;
 	Definir arregloLetras, dato, aux Como Caracter;
 	Definir columnaLetras como cadena;
 	Definir encontrado Como Logico; 
-	definir matriz Como entero;
 	Dimension arregloLetras(11);
 	columnaLetras <- " ABCDEFGHIJ";
 	
@@ -246,10 +245,10 @@ SubAlgoritmo IngresarPosicionBarcoJugador
 		arregloLetras[i] <- SubCadena(columnaLetras,i,i);
 	FinPara
 	//inicializar matriz para test nomas
-	Dimension matriz[11,11];
+	
 	Para i <- 1 Hasta 10 con paso 1 hacer //falta con paso 1
 		Para j <- 1 Hasta 10 con paso 1 hacer //falta con paso 1
-			matriz[i,j]<-0;
+			matrizJugador[i,j]<-0;
 		FinPara
 	FinPara
 	
@@ -283,14 +282,6 @@ SubAlgoritmo IngresarPosicionBarcoJugador
 		
 	FinSi
 	
-	// Mostrar matriz con el barco
-	Escribir "El barco ha sido colocado en la siguiente ubicacion: ", "(",fila, " ",columna,") ";
-	Para i <- 1 Hasta 10 con paso 1 hacer //falta con paso 1
-		Para j <- 1 Hasta 10 con paso 1 hacer; // falta con paso 1
-			Escribir sin saltar matriz[i,j], " ";
-		FinPara;
-		Escribir "";
-	FinPara
 
 FinSubAlgoritmo
 
