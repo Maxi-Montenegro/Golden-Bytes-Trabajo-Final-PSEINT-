@@ -7,11 +7,12 @@ Integrantes
 
 -Ezequiel Quiroz
 
--Jesus Gomez
-
 -Irene Machuca
 
 -Franco Poblete
 
 -Valentin Felipe
 
+-Landi Felipe
+
+-Leonardo Gómez
