@@ -12,21 +12,22 @@ Proceso BatallaNavalMain
 	Definir matrizEnemigo Como Entero;
 	Dimension matrizEnemigo[11,11];
 	
-	mensajeAmpliarPantalla();
-	Borrar Pantalla;
-	textoEstatico();
-	Borrar Pantalla;
-	Animacion();
-	Borrar Pantalla;
+	//mensajeAmpliarPantalla();
+	//Borrar Pantalla;
+	//textoEstatico();
+	//Borrar Pantalla;
+//	Animacion();
+//	Borrar Pantalla;
 	MensajeBienvenida(Nombre_Jugador);
 	Borrar Pantalla;
 	mostrarTableroJugador(matrizJugador);
 	Borrar Pantalla;
 	IngresarPosicionBarcoJugador(matrizJugador);
+	colocar_barcos_enemigo();
+	mostrarMatrizEnemigo();
 	mostrarTableroJugadorEnemigo(matrizJugador, matrizEnemigo);
-//	mostrarMatrizEnemigo();
-	//Coordenadas();
-	//Mostra mensaje de agradecimiento al final del juego
+	Coordenadas();
+	//Mostrar mensaje de agradecimiento al final del juego
 	finDelJuego(nombre_jugador);
 	
 FinProceso
@@ -584,3 +585,72 @@ SubAlgoritmo finDelJuego(nombre_jugador por referencia)
     Escribir "Recuerda: Si lo puedes imaginar, lo pudes programar.";
 	Escribir "Ariel Bentancud";
 FinSubAlgoritmo
+
+SubProceso  colocar_barcos_enemigo
+    definir columna,fila, i, j,tipo,h Como Entero;
+    definir matriz Como entero;
+    Dimension matriz[11,11];
+    
+    // Inicializar la matriz con agua (0 representa agua)
+    Para i <- 1 Hasta 10 Hacer
+        Para j <- 1 Hasta 10 Hacer
+            matriz[i, j] <- 0;
+        FinPara
+    FinPara
+    
+    // Arreglo para almacenar los tamaños y formatos de los barcos enemigos
+    definir barco Como Entero;
+    definir formatos Como Entero;
+	Dimension barco[5];
+	dimension formatos[5];
+	definir tecla Como Caracter;
+    
+    // Definir tamaños y formatos para cada tipo de barco
+    barco[1] <- 5; // tamaño del portaviones
+    barco[2] <- 4; // tamaño del crucero
+    barco[3] <- 3; // tamaño del submarino
+    barco[4] <- 2; // tamaño de la lancha
+    
+    formatos[1] <- 9; // formato del portaviones
+    formatos[2] <- 8; // formato del crucero
+    formatos[3] <- 7; // formato del submarino
+    formatos[4] <- 6; // formato de la lancha
+    
+    // Colocar cada barco automáticamente
+    Para tipo <- 1 Hasta 4 Hacer
+        // Establece ubicación aleatoria dentro de los límites del tablero
+        columna <- Aleatorio(1, 10 - barco[tipo] + 1);
+        fila <- Aleatorio(1, 10);
+        
+        // Colocar el barco en la matriz
+        h <- 0;
+        Para i <- 0 Hasta barco[tipo]-1 Hacer
+            matriz[fila, columna+h] <- formatos[tipo];
+            h <- h + 1;
+        FinPara
+    FinPara
+	
+	// Se le indica al jugador que presinando enter se colocaran 
+	//los barcos del enemigo en el tablero
+	
+	Escribir " El enemigo colocara sus barcos en el tablero";
+	escribir " Presione ENTER para continuar";
+	leer tecla;
+    
+    // Mostrar la matriz con los barcos colocados automáticamente
+    Escribir "Los barcos han sido colocados correctamente:";
+	Escribir "";
+	
+	Para i <- 1 Hasta 10 Hacer
+		Para j <- 1 Hasta 10 Hacer
+            Escribir sin saltar matriz[i, j], " ";
+        FinPara
+        Escribir "";
+    FinPara
+	Escribir "";
+	Escribir " Presione ENTER para continuar";
+	leer tecla;
+	Escribir "";
+    
+FinSubProceso
+
