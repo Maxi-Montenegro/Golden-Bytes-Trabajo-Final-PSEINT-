@@ -23,10 +23,10 @@ Proceso BatallaNavalMain
 	mostrarTableroJugador(matrizJugador);
 	Borrar Pantalla;
 	IngresarPosicionBarcoJugador(matrizJugador);
-	colocar_barcos_enemigo();
-	mostrarMatrizEnemigo();
+	colocar_barcos_enemigo(matrizEnemigo);
+	//mostrarMatrizEnemigo(matrizEnemigo);
 	mostrarTableroJugadorEnemigo(matrizJugador, matrizEnemigo);
-	Coordenadas();
+	//Coordenadas();
 	//Mostrar mensaje de agradecimiento al final del juego
 	finDelJuego(nombre_jugador);
 	
@@ -245,13 +245,13 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
 	Para i<-0 Hasta 10 Con Paso 1 Hacer
 		arregloLetras[i] <- SubCadena(columnaLetras,i,i);
 	FinPara
-	//inicializar matriz para test nomas
 	
-	Para i <- 1 Hasta 10 con paso 1 hacer //falta con paso 1
-		Para j <- 1 Hasta 10 con paso 1 hacer //falta con paso 1
-			matrizJugador[i,j]<-0;
-		FinPara
-	FinPara
+	//inicializar matriz para test nomas
+//	Para i <- 1 Hasta 10 con paso 1 hacer //falta con paso 1
+//		Para j <- 1 Hasta 10 con paso 1 hacer //falta con paso 1
+//			matrizJugador[i,j]<-0;
+//		FinPara
+//	FinPara
 	
 	// Solicitar columna y fila al usuario
 	Escribir "elija en que columna quiere colocar su barco (1-2-3-4-5-6-7-8-9-10) ";
@@ -270,6 +270,12 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
 		i <- i +1;
 	FinMientras
 	
+
+    // Mostrar la matriz con los barcos colocados automáticamente
+    Escribir "Los barcos han sido colocados correctamente:";
+	Escribir "";
+	
+	
 	// Colocamos el barco de 3
 	si columna == 10 entonces 
 		
@@ -283,7 +289,6 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
 		
 	FinSi
 	
-
 FinSubAlgoritmo
 
 SubAlgoritmo mostrarTableroJugadorEnemigo(matrizJugador Por Referencia, matrizEnemigo Por Referencia)
@@ -300,14 +305,14 @@ SubAlgoritmo mostrarTableroJugadorEnemigo(matrizJugador Por Referencia, matrizEn
 	
 	Escribir "Este es su tablero                                                                        Este es el tablero del enemigo"; 
 	// Lleno matriz enemigo con del con 0 REMOVER DESP
-	para i <- 0 Hasta 10 Con Paso 1 Hacer
-		para j <- 0 Hasta 10 Con Paso 1 Hacer
-			Escribir Sin Saltar "    "; //centrado de la matriz margen superior
-			matrizJugador[i,j] <- 0 ;
-			matrizEnemigo[i,j] <- Aleatorio(-1,2) ; //REMOVER ESTO PARA  LOS OTROS SUBALGORITOMOS
-		FinPara
-		
-	FinPara
+//	para i <- 0 Hasta 10 Con Paso 1 Hacer
+//		para j <- 0 Hasta 10 Con Paso 1 Hacer
+//			Escribir Sin Saltar "    "; //centrado de la matriz margen superior
+//			matrizJugador[i,j] <- 0 ;
+//			matrizEnemigo[i,j] <- 0 ; //REMOVER ESTO PARA  LOS OTROS SUBALGORITOMOS
+//		FinPara
+//		
+//	FinPara
 	
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		Escribir ""; 
@@ -334,26 +339,30 @@ SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, f
 			Escribir Sin Saltar "     "; // separacion entre los numeros
 		sino 
 			//Aqui imprimimos matriz 
-			si matriz[i,j+1] == -1 Entonces 
-				Escribir Sin Saltar "~"; // 
-				Escribir Sin Saltar "     ";
-			FinSi
-			si matriz[i,j+1] == 0 Entonces 
-				Escribir Sin Saltar "~"; // 
-				Escribir Sin Saltar "     "; // separacion del simbolo agua
-			FinSi
-			si matriz[i,j+1] == 1 Entonces 
-				
-				Escribir Sin Saltar "¶"; // 
-				Escribir Sin Saltar "     ";
-			FinSi
-			si matriz[i,j+1] == 2 Entonces 
-				Escribir Sin Saltar "*"; // 
-				Escribir Sin Saltar "     ";
-			FinSi
+			Escribir Sin Saltar matriz[i,j+1];
+			Escribir Sin Saltar "     ";
+//			si matriz[i,j+1] == -1 Entonces 
+//				Escribir Sin Saltar "~"; // 
+//				Escribir Sin Saltar "     ";
+//			FinSi
+//			si matriz[i,j+1] == 0 Entonces 
+//				Escribir Sin Saltar "~"; // 
+//				Escribir Sin Saltar "     "; // separacion del simbolo agua
+//			FinSi
+//			si matriz[i,j+1] == 1 Entonces 
+//				
+//				Escribir Sin Saltar "¶"; // 
+//				Escribir Sin Saltar "     ";
+//			FinSi
+//			si matriz[i,j+1] == 2 Entonces 
+//				Escribir Sin Saltar "*"; // 
+//				Escribir Sin Saltar "     ";
+//			FinSi
 		FinSi
 	FinPara
 	
+
+
 FinSubAlgoritmo	
 
 
@@ -575,29 +584,27 @@ SubAlgoritmo mostrarMatrizEnemigo
 	Si destruir < 3 y balas =0 Entonces
 		Escribir "PERDIO";
 	SiNo
-		Escribir "***FELICITACIONES DESTROSO TODOS LOS BARCOS***";
+		Escribir "***FELICITACIONES DESTROZO TODOS LOS BARCOS***";
 	FinSi
 FinSubAlgoritmo
 
 SubAlgoritmo finDelJuego(nombre_jugador por referencia)
     // Mostrar mensaje de agradecimiento al usuario
     Escribir "¡Gracias por jugar, ", nombre_jugador, " !Esperamos que hayas disfrutado del juego.";
-    Escribir "Recuerda: Si lo puedes imaginar, lo pudes programar.";
+    Escribir "Recuerda: Si lo puedes imaginar, lo puedes programar.";
 	Escribir "Ariel Bentancud";
 FinSubAlgoritmo
 
-SubProceso  colocar_barcos_enemigo
+SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
     definir columna,fila, i, j,tipo,h Como Entero;
-    definir matriz Como entero;
-    Dimension matriz[11,11];
     
-    // Inicializar la matriz con agua (0 representa agua)
+	// Inicializar la matriz con agua (0 representa agua)
     Para i <- 1 Hasta 10 Hacer
         Para j <- 1 Hasta 10 Hacer
-            matriz[i, j] <- 0;
+            matrizEnemigo[i, j] <- 0;
         FinPara
     FinPara
-    
+	
     // Arreglo para almacenar los tamaños y formatos de los barcos enemigos
     definir barco Como Entero;
     definir formatos Como Entero;
@@ -619,13 +626,16 @@ SubProceso  colocar_barcos_enemigo
     // Colocar cada barco automáticamente
     Para tipo <- 1 Hasta 4 Hacer
         // Establece ubicación aleatoria dentro de los límites del tablero
+		// SERIA UN CHECK DE LA VARIABLE COLUMNA DE ARRIBA MAS LAS QUE TIENE QUE SER COLOCADAS
+		//si el lugar es en columna i y lugar en columna i +1 +2+ +4 0 hago algo 
         columna <- Aleatorio(1, 10 - barco[tipo] + 1);
         fila <- Aleatorio(1, 10);
         
         // Colocar el barco en la matriz
         h <- 0;
+		
         Para i <- 0 Hasta barco[tipo]-1 Hacer
-            matriz[fila, columna+h] <- formatos[tipo];
+            matrizEnemigo[fila, columna+h] <- formatos[tipo];
             h <- h + 1;
         FinPara
     FinPara
@@ -641,12 +651,7 @@ SubProceso  colocar_barcos_enemigo
     Escribir "Los barcos han sido colocados correctamente:";
 	Escribir "";
 	
-	Para i <- 1 Hasta 10 Hacer
-		Para j <- 1 Hasta 10 Hacer
-            Escribir sin saltar matriz[i, j], " ";
-        FinPara
-        Escribir "";
-    FinPara
+
 	Escribir "";
 	Escribir " Presione ENTER para continuar";
 	leer tecla;
