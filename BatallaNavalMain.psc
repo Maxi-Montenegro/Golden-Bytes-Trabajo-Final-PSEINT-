@@ -262,7 +262,7 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
 	encontrado <- falso;
 	i<-0;
 	// Busqueda secuencial
-	mientras (i<10 y encontrado = Falso ) Hacer
+	mientras (i<11 y encontrado = Falso ) Hacer
 		Si (arregloLetras[i] = dato) Entonces
 			encontrado <- Verdadero;
 			fila <- i;
