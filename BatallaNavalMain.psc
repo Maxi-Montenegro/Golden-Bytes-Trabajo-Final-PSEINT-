@@ -271,7 +271,7 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
 	FinMientras
 	
 
-    // Mostrar la matriz con los barcos colocados autom�ticamente
+    // Mostrar la matriz con los barcos colocados automáticamente
     Escribir "Los barcos han sido colocados correctamente:";
 	Escribir "";
 	
@@ -351,7 +351,7 @@ SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, f
 //			FinSi
 //			si matriz[i,j+1] == 1 Entonces 
 //				
-//				Escribir Sin Saltar "�"; // 
+//				Escribir Sin Saltar "¶"; // 
 //				Escribir Sin Saltar "     ";
 //			FinSi
 //			si matriz[i,j+1] == 2 Entonces 
@@ -429,10 +429,10 @@ SubAlgoritmo Coordenadas
 		FinSi
 		Si matriz[fila, columna] = 1 Entonces
 			Escribir "Genial soldado, le diste al Barco";
-			matriz[fila, columna] <- 2; // 2 representa barco da�ado
+			matriz[fila, columna] <- 2; // 2 representa barco dañado
 		SiNo
 			Si matriz[fila, columna] = 2 Entonces
-				Escribir "Ya has atacado aqui, el barco ya esta de�ado";
+				Escribir "Ya has atacado aqui, el barco ya esta deñado";
 			FinSi
 		FinSi
 		
@@ -590,7 +590,7 @@ FinSubAlgoritmo
 
 SubAlgoritmo finDelJuego(nombre_jugador por referencia)
     // Mostrar mensaje de agradecimiento al usuario
-    Escribir "�Gracias por jugar, ", nombre_jugador, " !Esperamos que hayas disfrutado del juego.";
+    Escribir "¡Gracias por jugar, ", nombre_jugador, " !Esperamos que hayas disfrutado del juego.";
     Escribir "Recuerda: Si lo puedes imaginar, lo puedes programar.";
 	Escribir "Ariel Bentancud";
 FinSubAlgoritmo
@@ -605,27 +605,27 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
         FinPara
     FinPara
 	
-    // Arreglo para almacenar los tama�os y formatos de los barcos enemigos
+    // Arreglo para almacenar los tamaños y formatos de los barcos enemigos
     definir barco Como Entero;
     definir formatos Como Entero;
 	Dimension barco[5];
 	dimension formatos[5];
 	definir tecla Como Caracter;
     
-    // Definir tama�os y formatos para cada tipo de barco
-    barco[1] <- 5; // tama�o del portaviones
-    barco[2] <- 4; // tama�o del crucero
-    barco[3] <- 3; // tama�o del submarino
-    barco[4] <- 2; // tama�o de la lancha
+    // Definir tamaños y formatos para cada tipo de barco
+    barco[1] <- 5; // tamaño del portaviones
+    barco[2] <- 4; // tamaño del crucero
+    barco[3] <- 3; // tamaño del submarino
+    barco[4] <- 2; // tamaño de la lancha
     
     formatos[1] <- 9; // formato del portaviones
     formatos[2] <- 8; // formato del crucero
     formatos[3] <- 7; // formato del submarino
     formatos[4] <- 6; // formato de la lancha
     
-    // Colocar cada barco autom�ticamente
+    // Colocar cada barco automáticamente
     Para tipo <- 1 Hasta 4 Hacer
-        // Establece ubicaci�n aleatoria dentro de los l�mites del tablero
+        // Establece ubicación aleatoria dentro de los límites del tablero
 		// SERIA UN CHECK DE LA VARIABLE COLUMNA DE ARRIBA MAS LAS QUE TIENE QUE SER COLOCADAS
 		//si el lugar es en columna i y lugar en columna i +1 +2+ +4 0 hago algo 
         columna <- Aleatorio(1, 10 - barco[tipo] + 1);
@@ -647,7 +647,7 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
 	escribir " Presione ENTER para continuar";
 	leer tecla;
     
-    // Mostrar la matriz con los barcos colocados autom�ticamente
+    // Mostrar la matriz con los barcos colocados automáticamente
     Escribir "Los barcos han sido colocados correctamente:";
 	Escribir "";
 	
@@ -658,4 +658,71 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
 	Escribir "";
     
 FinSubProceso
+
+// menu-varias opciones-opcion "tener las rglas del juego o como jugar"
+// 1.	jugar 
+// 2.	reglas del juego o como jugar
+// 3.	creditos
+// 4.	Salir 
+Proceso ReglasDelJuego
+	definir opcion como entero;
+	
+	
+	//Repetir
+	Escribir "MENU";
+	Escribir "1- Jugar"; // aqui se redirige al subalgoritmo "mostrarTableroJugador(matrizJugador Por Referencia)"
+	Escribir "2- Reglas del juego";
+	Escribir "3- Creditos";// aqui se redirige al subalgoritmo "creditos ?"
+	Escribir "4- salir";
+	Escribir sin saltar "digite la opcion de menu:";
+	Leer opcion;
+	escribir "";
+	Segun opcion Hacer
+		1:
+			Escribir "inicio de juego"; //;
+		2:
+			Escribir "                                                                                    Reglas del juego"; 
+			Escribir "*************************************************************************************************************************++++**************************************************";
+			Escribir "";
+			Escribir " Las reglas de la batalla naval son";
+			Escribir "";
+			Escribir " CONDICIONES INICIALES:";
+			Escribir " Cantidad de jugadores: 2 jugadores";
+			Escribir " Para iniciar el juego cada jugador debe tener: ";
+			Escribir " 1 Portaaviones , 1 crucero , 1 submarino";
+			
+			Escribir "";
+			Escribir " COMIENZO DEL JUEGO";
+			Escribir " 1 - Los jugadores eligen quien inicia el ataque";
+			Escribir " 2 - Cada jugador coloca sus barcos horizontal o verticalmente (no en diagonal) ";
+			Escribir " 3 - Cuando hayan sido colocados todos los barcos anuncian LISTO, a partir de ese momento no se pueden cambiar los barcos de posición.";
+			Escribir "";
+			Escribir " COMIENZA EL COMBATE";
+			Escribir " 1 - El jugador que primero dijo LISTO, abre el fuego ingresando las coordenadas (compuesta por una letra y un numero) tratando de alcanzar un barco enemigo, luego lo hará su ";
+			Escribir"      contrincante y así sucesivamente.";
+			Escribir " 2 - El disparo es anunciado con una Letra y un Número que corresponden a una coordenada del tablero enemigo localizado por la convergencia entre la Letra y el Número de su base.";
+			Escribir " 3 - El atacado deberá informar su situación: TOCADO, si el disparo fue certero ó AGUA, si el disparo fue errado y el tipo de barco alcanzado (Portaaviones, Submarinos, etc).";
+			Escribir "";
+			Escribir " MARCACIÓN";
+			Escribir " 1 - Después que el jugador haya efectuado el disparo y sepa si ha acertado o no, podrá ir visualizando los aciertos, ésto le servirá de referencia y evitará repetir los disparos";
+			Escribir "     a los mismos puntos.";
+			Escribir " 2 - No se marcan los tiros fallidos del adversario pero sí los impactos.";
+			Escribir "";				
+			Escribir " HUNDIR LOS BARCOS";
+			Escribir " 1 - Cuando un barco haya recibido tantos impactos como agujeros tiene, se considera HUNDIDO y deberá ser retirado de la base debiendo ser anunciado al oponente.";
+			Escribir " 2 - Los jugadores deben ser honestos anunciando los impactos recibidos, en caso de duda o posible equivocación se solicita tregua y se revisan los disparos realizados hasta el momento.";
+			
+			Escribir "     Será ganador el primer jugador que hunda los cuatro barcos de su oponente.";
+			Escribir "";
+			Escribir "                                                                                       ¡A JUGAR!";
+		3:
+			Escribir "Creditos";
+		4:
+			Escribir "Salir del menu";
+		De Otro Modo:
+			Escribir "se equivocó de opcion de menu.";
+	FinSegun
+	Escribir "";
+FinProceso
+
 
