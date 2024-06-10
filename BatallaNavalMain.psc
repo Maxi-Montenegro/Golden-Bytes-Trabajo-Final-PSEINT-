@@ -170,7 +170,9 @@ FinSubProceso
 // Aqui Damos un Mensaje de Bienvenida al Jugador 
 
 SubProceso MensajeBienvenida (nombre_jugador Por Referencia)
-	
+	Definir confirmacion Como Caracter;
+	Definir min_longitud como entero;
+	min_longitud <- 3; //Longitud minima para el nombre
 	Definir tecla Como Caracter;
 	
 	Escribir "";
@@ -183,11 +185,25 @@ SubProceso MensajeBienvenida (nombre_jugador Por Referencia)
 	Escribir "                                                                   Estas Listo y preparado para esta Gran Aventura";
 	Escribir "";
 	Escribir "                                                                                 Presentate Soldado ";
-	Escribir "                                                                                 Escribe Tu Nombre ";
+	Escribir "";
+	Repetir
+		
+	Escribir "                                                                       Escribe Tu Nombre (mínimo ", min_longitud, " caracteres):";
 	leer nombre_jugador ;
+	Si longitud(nombre_jugador) < min_longitud Entonces
+		Escribir "El nombre debe tener al menos ", min_longitud, " caracteres. Inténtalo de nuevo.";
+	Sino
+		// Confirmar el nombre ingresado
+		Escribir "¿Es correcto el nombre ", nombre_jugador, "? (S/N):";
+		Leer confirmacion;	
+		// Convertir la confirmación a mayúscula para simplificar la comparación
+		confirmacion <- Mayusculas(confirmacion);
+	FinSi
+    Hasta Que longitud(nombre_jugador) >= min_longitud Y confirmacion = "S"
+    Escribir "Nombre confirmado: ",nombre_jugador;
 	Escribir "";
 	Escribir "                                                             Perfecto soldado"," ", nombre_jugador, " ??? Que comience la Batalla !!!";
-
+	
 	Escribir "";
 	Escribir "";
 	
