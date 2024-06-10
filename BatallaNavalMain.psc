@@ -170,8 +170,8 @@ FinSubProceso
 // Aqui Damos un Mensaje de Bienvenida al Jugador 
 
 SubProceso MensajeBienvenida (nombre_jugador Por Referencia)
-	Definir confirmacion Como Caracter;
-	Definir min_longitud como entero;
+	Definir confirmacion Como Caracter; //variable para Si o No
+	Definir min_longitud como entero; //longitd minima del nombre
 	min_longitud <- 3; //Longitud minima para el nombre
 	Definir tecla Como Caracter;
 	
