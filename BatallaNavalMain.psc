@@ -24,9 +24,10 @@ Proceso BatallaNavalMain
 	Borrar Pantalla;
 	IngresarPosicionBarcoJugador(matrizJugador);
 	colocar_barcos_enemigo(matrizEnemigo);
-	//mostrarMatrizEnemigo(matrizEnemigo);
 	mostrarTableroJugadorEnemigo(matrizJugador, matrizEnemigo);
-	//Coordenadas();
+	ataqueDelJugador(matrizEnemigo);
+	mostrarTableroJugadorEnemigo(matrizJugador, matrizEnemigo);
+	ataqueDelJugador(matrizEnemigo);
 	//Mostrar mensaje de agradecimiento al final del juego
 	finDelJuego(nombre_jugador);
 	
@@ -120,7 +121,7 @@ SubProceso Animacion
 	Escribir "";
 	Escribir "                                                                              Presione Enter para continuar...";
 	Leer tecla;
-
+	
 	
 FinSubProceso
 
@@ -188,17 +189,17 @@ SubProceso MensajeBienvenida (nombre_jugador Por Referencia)
 	Escribir "";
 	Repetir
 		
-	Escribir "                                                                       Escribe Tu Nombre (m√≠nimo ", min_longitud, " caracteres):";
-	leer nombre_jugador ;
-	Si longitud(nombre_jugador) < min_longitud Entonces
-		Escribir "El nombre debe tener al menos ", min_longitud, " caracteres. Int√©ntalo de nuevo.";
-	Sino
-		// Confirmar el nombre ingresado
-		Escribir "¬øEs correcto el nombre ", nombre_jugador, "? (S/N):";
-		Leer confirmacion;	
-		// Convertir la confirmaci√≥n a may√∫scula para simplificar la comparaci√≥n
-		confirmacion <- Mayusculas(confirmacion);
-	FinSi
+		Escribir "                                                                       Escribe Tu Nombre (mÌnimo ", min_longitud, " caracteres):";
+		leer nombre_jugador ;
+		Si longitud(nombre_jugador) < min_longitud Entonces
+			Escribir "El nombre debe tener al menos ", min_longitud, " caracteres. IntÈntalo de nuevo.";
+		Sino
+			// Confirmar el nombre ingresado
+			Escribir "øEs correcto el nombre ", nombre_jugador, "? (S/N):";
+			Leer confirmacion;	
+			// Convertir la confirmaciÛn a may˙scula para simplificar la comparaciÛn
+			confirmacion <- Mayusculas(confirmacion);
+		FinSi
     Hasta Que longitud(nombre_jugador) >= min_longitud Y confirmacion = "S"
     Escribir "Nombre confirmado: ",nombre_jugador;
 	Escribir "";
@@ -225,9 +226,9 @@ SubAlgoritmo mostrarTableroJugador(matrizJugador Por Referencia)
 	
 	para i <- 0 Hasta 9 Con Paso 1 Hacer
 		filaNumeros[i] <- i + 1 ;
-
+		
 	FinPara 
-
+	
 	Escribir "Este es su tablero piense en donde ubicar sus barcos"; 
 	// Lleno matriz del con 0
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
@@ -262,13 +263,7 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
 		arregloLetras[i] <- SubCadena(columnaLetras,i,i);
 	FinPara
 	
-	//inicializar matriz para test nomas
-//	Para i <- 1 Hasta 10 con paso 1 hacer //falta con paso 1
-//		Para j <- 1 Hasta 10 con paso 1 hacer //falta con paso 1
-//			matrizJugador[i,j]<-0;
-//		FinPara
-//	FinPara
-	
+
 	// Solicitar columna y fila al usuario
 	Escribir "elija en que columna quiere colocar su barco (1-2-3-4-5-6-7-8-9-10) ";
 	Leer columna;
@@ -286,8 +281,8 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
 		i <- i +1;
 	FinMientras
 	
-
-    // Mostrar la matriz con los barcos colocados autom√°ticamente
+	
+    // Mostrar la matriz con los barcos colocados autom·ticamente
     Escribir "Los barcos han sido colocados correctamente:";
 	Escribir "";
 	
@@ -320,15 +315,7 @@ SubAlgoritmo mostrarTableroJugadorEnemigo(matrizJugador Por Referencia, matrizEn
 	FinPara 
 	
 	Escribir "Este es su tablero                                                                        Este es el tablero del enemigo"; 
-	// Lleno matriz enemigo con del con 0 REMOVER DESP
-//	para i <- 0 Hasta 10 Con Paso 1 Hacer
-//		para j <- 0 Hasta 10 Con Paso 1 Hacer
-//			Escribir Sin Saltar "    "; //centrado de la matriz margen superior
-//			matrizJugador[i,j] <- 0 ;
-//			matrizEnemigo[i,j] <- 0 ; //REMOVER ESTO PARA  LOS OTROS SUBALGORITOMOS
-//		FinPara
-//		
-//	FinPara
+	
 	
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		Escribir ""; 
@@ -367,7 +354,7 @@ SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, f
 //			FinSi
 //			si matriz[i,j+1] == 1 Entonces 
 //				
-//				Escribir Sin Saltar "¬∂"; // 
+//				Escribir Sin Saltar "∂"; // 
 //				Escribir Sin Saltar "     ";
 //			FinSi
 //			si matriz[i,j+1] == 2 Entonces 
@@ -377,236 +364,73 @@ SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, f
 		FinSi
 	FinPara
 	
-
-
+	
 FinSubAlgoritmo	
 
-
-SubAlgoritmo Coordenadas
-	Definir matriz Como Entero;
-	Definir letras Como Caracter;
-	Definir i, j Como Entero;
-	Definir fila, columna Como Entero;
-	Definir coord_letra Como Caracter;
-	Definir coord_num Como Entero;
-	Dimension matriz[11,11];
-	Dimension letras[11];
-	
-	// Inicializar letras
-	letras[1] <- 'A';
-	letras[2] <- 'B';
-	letras[3] <- 'C';
-	letras[4] <- 'D';
-	letras[5] <- 'E';
-	letras[6] <- 'F';
-	letras[7] <- 'G';
-	letras[8] <- 'H';
-	letras[9] <- 'I';
-	letras[10] <- 'J';
-	
-	// Inicializar matriz
-	Para i <- 0 Hasta 10 Hacer
-		Para j <- 0 Hasta 10 Hacer
-			matriz[i, j] <- 0; // 0 representa agua
-		FinPara
-	FinPara
-	// Colocar barcos aleatoriamente
-	// Ejemplo: Colocar 5 barcos (1 en cada fila)
-	Para i <- 1 Hasta 5 Hacer
-		columna <- Aleatorio(1, 10);
-		matriz[i, columna] <- 1; // 1 representa barco
-	FinPara
-	
-	
-	// Ingresar coordenadas y verificar
-	Repetir
-		// Solicitar coordenadas
-		Escribir "Ingrese las coordenadas (ejemplo: A 5): ";
-		Leer coord_letra, coord_num;
-		
-		coord_letra <- Mayusculas(coord_letra);
-		
-		// Convertir coordenadas
-		columna <- coord_num;
-		Para i <- 1 Hasta 10 Hacer
-			Si letras[i] = coord_letra Entonces
-				fila <- i;
-			FinSi
-		FinPara
-		
-		// Verificar coordenada
-		Si matriz[fila, columna] = 0 Entonces
-			Escribir "Agua";
-			matriz[fila, columna] <- -1; // -1 representa agua
-		SiNo
-			Si matriz[fila, columna] = -1 Entonces
-				Escribir "Ya has atacado aqui, es agua";
-			FinSi
-		FinSi
-		Si matriz[fila, columna] = 1 Entonces
-			Escribir "Genial soldado, le diste al Barco";
-			matriz[fila, columna] <- 2; // 2 representa barco da√±ado
-		SiNo
-			Si matriz[fila, columna] = 2 Entonces
-				Escribir "Ya has atacado aqui, el barco ya esta de√±ado";
-			FinSi
-		FinSi
-		
-		// Mostrar matriz (para pruebas)
-		Para i <- 0 Hasta 10 Hacer
-			Para j <- 0 Hasta 10 Hacer
-				Escribir Sin Saltar matriz[i, j], " ";
-			FinPara
-			Escribir "";
-		FinPara
-		
-		
-	Hasta Que Falso // Bucle infinito, termina manualmente
-FinSubAlgoritmo
-
-
-
-
-// En este subproceso se ha creado una matriz que sera el tablero del enemigo
-
-SubAlgoritmo mostrarMatrizEnemigo
-	
-	Definir matrizEnemigo, i,j, filaNumeros Como Entero;
-	Definir columnaLetras Como cadena;
-	Dimension matrizEnemigo[11,11], filaNumeros[10];
+// Esta funcion permite atacar al enemigo
+SubAlgoritmo ataqueDelJugador(matrizEnemigo Por Referencia)
+	Escribir "Ingrese la coordenada a atacar en la matriz del enemigo";
+	Definir posicion, columna, fila, i, j como Entero;
+	Definir arregloLetras, dato, aux Como Caracter;
+	Definir columnaLetras como cadena;
+	Definir encontrado Como Logico; 
+	Dimension arregloLetras(11);
 	columnaLetras <- " ABCDEFGHIJ";
 	
-	// Lleno fila 0 con numeros del 1 al 10
-	para i <- 0 Hasta 9 Con Paso 1 Hacer
-		filaNumeros[i] <- i + 1 ;
+	
+	Para i<-0 Hasta 10 Con Paso 1 Hacer
+		arregloLetras[i] <- SubCadena(columnaLetras,i,i);
 	FinPara
 	
-	
-	
-	// Lleno matriz del con 0
-	para i <- 0 Hasta 10 Con Paso 1 Hacer
-		para j <- 0 Hasta 10 Con Paso 1 Hacer
-			matrizEnemigo[i,j] <- 0;
-		FinPara
-		
-	FinPara
-	
-	
-	
-	//Muestro matrizEnemigo 
-	para i <- 0 Hasta 10 Con Paso 1 Hacer
-		Escribir "";
-		Escribir Sin Saltar "   ";
-		para j <- 0 Hasta 9 Con Paso 1 Hacer
-			si j == 0 Entonces // si true se muestra las letras
-				Escribir Sin Saltar Subcadena(columnaLetras, i, i);
-				Escribir Sin Saltar "    ";
-			FinSi
-			si i == 0 Entonces// si true muestro los numeros
-				Escribir Sin Saltar filaNumeros[j];
-				Escribir Sin Saltar "      ";
-			sino 
-				Escribir Sin Saltar "[",matrizEnemigo[i,j] , "]"; // aca hago un mas 1 al j para salterme la columna 0
-				Escribir Sin Saltar "    ";
-			FinSi
-			
-		FinPara
-		Escribir "";
-		
-	FinPara
-	
-	
-	
-	//esto de aca es un check necesitaba saber que quedo alineada
-	//Leer fila ; // loop check que sea string
-	
-	//-----------------------------------------------------------------------------------------------------------------------------
-	Definir cx,x1 Como Entero;
-	Definir cy ,y1 Como Entero;
-	Definir destruir Como Entero;
-	Definir balas Como Entero;
-	Definir M,M2 Como Entero ;
-	
-	
-	Dimension M2[11,11];
-	
-	balas <- 0;
-	destruir <- 0 ;
-	
-	Para i<- 0 hasta 10 Hacer
-		para j<-0 hasta 10 Hacer
-			M2[i,j] <- 0;
-		FinPara
-	FinPara
-	
-	
-	// Alijo al azar
-	
-	Para i<-1 Hasta 10 Hacer
-		x1 <-Aleatorio(1,9);
-		y1<- Aleatorio(1,9);
-		si M2[x1,y1] = 0 Entonces
-			M2[x1,y1] <- 1;
+	// Solicitar columna y fila al usuario
+	Escribir "Elija la columna para atacar (1-2-3-4-5-6-7-8-9-10) ";
+	Leer columna;
+	Escribir "Elija la fila para atacar (A-B-C-D-E-F-G-H-I-J) ";
+	Leer dato;
+	dato <- Mayusculas(dato);
+	encontrado <- falso;
+	i<-1;//  Empezamos desde el 1 para no contar al espacio como encontrado
+	// Busqueda secuencial
+	mientras (i<11 y encontrado = Falso ) Hacer
+		Si (arregloLetras[i] = dato) Entonces
+			encontrado <- Verdadero;
+			fila <- i;
 		FinSi
-	FinPara
+		i <- i +1;
+	FinMientras
 	
 	
-	Escribir "Ingrese numeros de disparo";
-	Leer balas;
+    Escribir "Desplegando ataque en las coordenadas ", columna, " : ", dato;
+	Escribir "";
 	
-	Repetir
-		Escribir "Ingrese coordenada x del disparo(entre 0 al 9)";
-		Leer cx;
-		Escribir "Ingrese coordenada y del disparo(entre 0 al 9)";
-		Leer cy;
-		
-		balas<- balas-1;
-		// Cuando da a u nbarco marca 1 y cuando cae al agua marca 2 
-		Si M2[cx,cy]=2 Entonces
-			Escribir "HA DADO EN EL BARCO";
-			matrizEnemigo[cx,cy] <- 1;
-			destruir<- destruir + 1;
-		SiNo
-			Escribir "                              --Disparo Al Mar--";
-			matrizEnemigo[cx,cy] <- 2;
-		FinSi
-		Escribir "";
-		para i <- 0 Hasta 10 Con Paso 1 Hacer
-			Escribir "";
-			Escribir Sin Saltar "   ";
-			para j <- 0 Hasta 9 Con Paso 1 Hacer
-				si j == 0 Entonces // si true se muestra las letras
-					Escribir Sin Saltar Subcadena(columnaLetras, i, i);
-					Escribir Sin Saltar "    ";
-				FinSi
-				si i == 0 Entonces// si true muestro los numeros
-					Escribir Sin Saltar filaNumeros[j];
-					Escribir Sin Saltar "      ";
-				sino 
-					Escribir Sin Saltar "[",M2[i,j+1] , "]"; // aca hago un mas 1 al j para salterme la columna 0
-					Escribir Sin Saltar "    ";
-				FinSi
-				
-			FinPara
-			Escribir "";
+	//Verficar coordenadas
+	Segun matrizEnemigo[fila, columna] Hacer
+		0:
+			Escribir "Le has dado al Agua";
+			matrizEnemigo[fila, columna] <- -1; // -1 representa agua
+		6: // formato de la lancha
+			Escribir "Genial soldado, le diste a la lancha del enemigo";
+			matrizEnemigo[fila, columna] <- -6; // representa lancha daÒado			
+		7: // formato del submarino
+			Escribir "Genial soldado, le diste al submarino del enemigo";
+			matrizEnemigo[fila, columna] <- -7; // representa submarino daÒado
+		8: // formato del crucero
+			Escribir "Genial soldado, le diste al crucero del enemigo";
+			matrizEnemigo[fila, columna] <- -8; // representa crucero daÒado
+		9: // formato del portaviones
+			Escribir "Genial soldado, le diste al portaviones del enemigo.";
+			matrizEnemigo[fila, columna] <- -9; // representa portaviones daÒado
 			
-		FinPara
-		Escribir "";
-		Escribir "------------------------------------------------------------------------------------------------------------------";
-		Escribir "Le quedan ",balas," disparos";
-		Escribir "Barcos destruidos :", destruir;
-	Hasta Que destruir = 3 o balas = 0
+		De Otro Modo:
+			Escribir "Ya has atacado aqui, turno del enemigo";
+	FinSegun
 	
-	Si destruir < 3 y balas =0 Entonces
-		Escribir "PERDIO";
-	SiNo
-		Escribir "***FELICITACIONES DESTROZO TODOS LOS BARCOS***";
-	FinSi
+
 FinSubAlgoritmo
 
 SubAlgoritmo finDelJuego(nombre_jugador por referencia)
     // Mostrar mensaje de agradecimiento al usuario
-    Escribir "¬°Gracias por jugar, ", nombre_jugador, " !Esperamos que hayas disfrutado del juego.";
+    Escribir "°Gracias por jugar, ", nombre_jugador, " !Esperamos que hayas disfrutado del juego.";
     Escribir "Recuerda: Si lo puedes imaginar, lo puedes programar.";
 	Escribir "Ariel Bentancud";
 FinSubAlgoritmo
@@ -621,27 +445,27 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
         FinPara
     FinPara
 	
-    // Arreglo para almacenar los tama√±os y formatos de los barcos enemigos
+    // Arreglo para almacenar los tamaÒos y formatos de los barcos enemigos
     definir barco Como Entero;
     definir formatos Como Entero;
 	Dimension barco[5];
 	dimension formatos[5];
 	definir tecla Como Caracter;
     
-    // Definir tama√±os y formatos para cada tipo de barco
-    barco[1] <- 5; // tama√±o del portaviones
-    barco[2] <- 4; // tama√±o del crucero
-    barco[3] <- 3; // tama√±o del submarino
-    barco[4] <- 2; // tama√±o de la lancha
+    // Definir tamaÒos y formatos para cada tipo de barco
+    barco[1] <- 4; // tamaÒo del portaviones
+    barco[2] <- 4; // tamaÒo del crucero
+    barco[3] <- 4; // tamaÒo del submarino
+    barco[4] <- 2; // tamaÒo de la lancha
     
     formatos[1] <- 9; // formato del portaviones
     formatos[2] <- 8; // formato del crucero
     formatos[3] <- 7; // formato del submarino
     formatos[4] <- 6; // formato de la lancha
     
-    // Colocar cada barco autom√°ticamente
+    // Colocar cada barco autom·ticamente
     Para tipo <- 1 Hasta 4 Hacer
-        // Establece ubicaci√≥n aleatoria dentro de los l√≠mites del tablero
+        // Establece ubicaciÛn aleatoria dentro de los lÌmites del tablero
 		// SERIA UN CHECK DE LA VARIABLE COLUMNA DE ARRIBA MAS LAS QUE TIENE QUE SER COLOCADAS
 		//si el lugar es en columna i y lugar en columna i +1 +2+ +4 0 hago algo 
         columna <- Aleatorio(1, 10 - barco[tipo] + 1);
@@ -663,11 +487,11 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
 	escribir " Presione ENTER para continuar";
 	leer tecla;
     
-    // Mostrar la matriz con los barcos colocados autom√°ticamente
+    // Mostrar la matriz con los barcos colocados autom·ticamente
     Escribir "Los barcos han sido colocados correctamente:";
 	Escribir "";
 	
-
+	
 	Escribir "";
 	Escribir " Presione ENTER para continuar";
 	leer tecla;
@@ -680,7 +504,7 @@ FinSubProceso
 // 2.	reglas del juego o como jugar
 // 3.	creditos
 // 4.	Salir 
-Proceso ReglasDelJuego
+SubProceso ReglasDelJuego
 	definir opcion como entero;
 	
 	
@@ -711,34 +535,35 @@ Proceso ReglasDelJuego
 			Escribir " COMIENZO DEL JUEGO";
 			Escribir " 1 - Los jugadores eligen quien inicia el ataque";
 			Escribir " 2 - Cada jugador coloca sus barcos horizontal o verticalmente (no en diagonal) ";
-			Escribir " 3 - Cuando hayan sido colocados todos los barcos anuncian LISTO, a partir de ese momento no se pueden cambiar los barcos de posici√≥n.";
+			Escribir " 3 - Cuando hayan sido colocados todos los barcos anuncian LISTO, a partir de ese momento no se pueden cambiar los barcos de posiciÛn.";
 			Escribir "";
 			Escribir " COMIENZA EL COMBATE";
-			Escribir " 1 - El jugador que primero dijo LISTO, abre el fuego ingresando las coordenadas (compuesta por una letra y un numero) tratando de alcanzar un barco enemigo, luego lo har√° su ";
-			Escribir"      contrincante y as√≠ sucesivamente.";
-			Escribir " 2 - El disparo es anunciado con una Letra y un N√∫mero que corresponden a una coordenada del tablero enemigo localizado por la convergencia entre la Letra y el N√∫mero de su base.";
-			Escribir " 3 - El atacado deber√° informar su situaci√≥n: TOCADO, si el disparo fue certero √≥ AGUA, si el disparo fue errado y el tipo de barco alcanzado (Portaaviones, Submarinos, etc).";
+			Escribir " 1 - El jugador que primero dijo LISTO, abre el fuego ingresando las coordenadas (compuesta por una letra y un numero) tratando de alcanzar un barco enemigo, luego lo har· su ";
+			Escribir"      contrincante y asÌ sucesivamente.";
+			Escribir " 2 - El disparo es anunciado con una Letra y un N˙mero que corresponden a una coordenada del tablero enemigo localizado por la convergencia entre la Letra y el N˙mero de su base.";
+			Escribir " 3 - El atacado deber· informar su situaciÛn: TOCADO, si el disparo fue certero Û AGUA, si el disparo fue errado y el tipo de barco alcanzado (Portaaviones, Submarinos, etc).";
 			Escribir "";
-			Escribir " MARCACI√ìN";
-			Escribir " 1 - Despu√©s que el jugador haya efectuado el disparo y sepa si ha acertado o no, podr√° ir visualizando los aciertos, √©sto le servir√° de referencia y evitar√° repetir los disparos";
+			Escribir " MARCACI”N";
+			Escribir " 1 - DespuÈs que el jugador haya efectuado el disparo y sepa si ha acertado o no, podr· ir visualizando los aciertos, Èsto le servir· de referencia y evitar· repetir los disparos";
 			Escribir "     a los mismos puntos.";
-			Escribir " 2 - No se marcan los tiros fallidos del adversario pero s√≠ los impactos.";
+			Escribir " 2 - No se marcan los tiros fallidos del adversario pero sÌ los impactos.";
 			Escribir "";				
 			Escribir " HUNDIR LOS BARCOS";
-			Escribir " 1 - Cuando un barco haya recibido tantos impactos como agujeros tiene, se considera HUNDIDO y deber√° ser retirado de la base debiendo ser anunciado al oponente.";
-			Escribir " 2 - Los jugadores deben ser honestos anunciando los impactos recibidos, en caso de duda o posible equivocaci√≥n se solicita tregua y se revisan los disparos realizados hasta el momento.";
+			Escribir " 1 - Cuando un barco haya recibido tantos impactos como agujeros tiene, se considera HUNDIDO y deber· ser retirado de la base debiendo ser anunciado al oponente.";
+			Escribir " 2 - Los jugadores deben ser honestos anunciando los impactos recibidos, en caso de duda o posible equivocaciÛn se solicita tregua y se revisan los disparos realizados hasta el momento.";
 			
-			Escribir "     Ser√° ganador el primer jugador que hunda los cuatro barcos de su oponente.";
+			Escribir "     Ser· ganador el primer jugador que hunda los cuatro barcos de su oponente.";
 			Escribir "";
-			Escribir "                                                                                       ¬°A JUGAR!";
+			Escribir "                                                                                       °A JUGAR!";
 		3:
 			Escribir "Creditos";
 		4:
 			Escribir "Salir del menu";
 		De Otro Modo:
-			Escribir "se equivoc√≥ de opcion de menu.";
+			Escribir "se equivocÛ de opcion de menu.";
 	FinSegun
 	Escribir "";
-FinProceso
+FinSubProceso
+
 
 
