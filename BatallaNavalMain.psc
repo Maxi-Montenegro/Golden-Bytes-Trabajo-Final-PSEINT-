@@ -40,8 +40,7 @@ Proceso BatallaNavalMain
 				Escribir "Se equivocó de opcion de menu.";
 		FinSegun
 	Hasta Que opcion == 4
-	
-	
+		
 FinProceso
 
 SubAlgoritmo batallaNavalLoop(nombre_jugador Por Referencia)
@@ -75,6 +74,7 @@ SubAlgoritmo batallaNavalLoop(nombre_jugador Por Referencia)
 	Repetir
 		mostrarTableroJugadorEnemigo(matrizJugador, matrizEnemigo);
 		ataqueDelJugador(matrizEnemigo, contadorBarcosEnemigo);
+		//ataqueDelEnemigo(matrizJugador, contadorBarcosJugador) //atacar enemigo
 		i <-1;
 		ganar <- Verdadero;
 		
@@ -412,25 +412,42 @@ SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, f
 			Escribir Sin Saltar "     "; // separacion entre los numeros
 		sino 
 			//Aqui imprimimos matriz 
-			Escribir Sin Saltar matriz[i,j+1];
-			Escribir Sin Saltar "     ";
-//			si matriz[i,j+1] == -1 Entonces 
-//				Escribir Sin Saltar "~"; // 
-//				Escribir Sin Saltar "     ";
-//			FinSi
-//			si matriz[i,j+1] == 0 Entonces 
-//				Escribir Sin Saltar "~"; // 
-//				Escribir Sin Saltar "     "; // separacion del simbolo agua
-//			FinSi
-//			si matriz[i,j+1] == 1 Entonces 
-//				
-//				Escribir Sin Saltar "¶"; // 
-//				Escribir Sin Saltar "     ";
-//			FinSi
-//			si matriz[i,j+1] == 2 Entonces 
-//				Escribir Sin Saltar "*"; // 
-//				Escribir Sin Saltar "     ";
-//			FinSi
+//			Escribir Sin Saltar matriz[i,j+1];
+//			Escribir Sin Saltar "     ";
+			si matriz[i,j+1] == -1 Entonces 
+				Escribir Sin Saltar "~"; // 
+				Escribir Sin Saltar "     ";
+			FinSi
+			si matriz[i,j+1] == 0 Entonces 
+				Escribir Sin Saltar "~"; // 
+				Escribir Sin Saltar "     "; // separacion del simbolo agua
+			FinSi
+			si matriz[i,j+1] == 1 Entonces 
+				
+				Escribir Sin Saltar "¶"; // 
+				Escribir Sin Saltar "     ";
+			FinSi
+			si matriz[i,j+1] < -1 Entonces 
+				Escribir Sin Saltar "*"; // 
+				Escribir Sin Saltar "     ";
+			FinSi
+			si matriz[i,j+1] == 6 Entonces 
+				Escribir Sin Saltar "L"; // 
+				Escribir Sin Saltar "     ";
+			FinSi
+			si matriz[i,j+1] == 7 Entonces 
+				Escribir Sin Saltar "S"; // 
+				Escribir Sin Saltar "     ";
+			FinSi
+			si matriz[i,j+1] == 8 Entonces 
+				Escribir Sin Saltar "C"; // 
+				Escribir Sin Saltar "     ";
+			FinSi
+			si matriz[i,j+1] == 9 Entonces 
+				Escribir Sin Saltar "P"; // 
+				Escribir Sin Saltar "     ";
+			FinSi
+
 		FinSi
 	FinPara
 	
@@ -569,9 +586,11 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
         // Establece ubicación aleatoria dentro de los límites del tablero
 		// SERIA UN CHECK DE LA VARIABLE COLUMNA DE ARRIBA MAS LAS QUE TIENE QUE SER COLOCADAS
 		//si el lugar es en columna i y lugar en columna i +1 +2+ +4 0 hago algo 
-        columna <- Aleatorio(1, 10 - barco[tipo] + 1);
+		
+		Repetir	
+		columna <- Aleatorio(1, 10 - barco[tipo] + 1);
         fila <- Aleatorio(1, 10);
-        
+		Hasta Que matrizEnemigo[fila,columna+1] == 0 y matrizEnemigo[fila,columna+2] == 0 y matrizEnemigo[fila,columna+3] == 0 y matrizEnemigo[fila,columna+4] == 0
         // Colocar el barco en la matriz
         h <- 0;
 		
@@ -579,6 +598,8 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
             matrizEnemigo[fila, columna+h] <- formatos[tipo];
             h <- h + 1;
         FinPara
+		
+	
     FinPara
 	
 	// Se le indica al jugador que presinando enter se colocaran 
