@@ -590,7 +590,7 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
 		Repetir	
 		columna <- Aleatorio(1, 10 - barco[tipo] + 1);
         fila <- Aleatorio(1, 10);
-		Hasta Que matrizEnemigo[fila,columna+1] == 0 y matrizEnemigo[fila,columna+2] == 0 y matrizEnemigo[fila,columna+3] == 0 y matrizEnemigo[fila,columna+4] == 0
+		Hasta Que matrizEnemigo[fila,columna] == 0 y matrizEnemigo[fila,columna+1] == 0 y matrizEnemigo[fila,columna+2] == 0 y matrizEnemigo[fila,columna+3] == 0
         // Colocar el barco en la matriz
         h <- 0;
 		
