@@ -585,8 +585,7 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
     Para tipo <- 1 Hasta 4 Hacer
         // Establece ubicación aleatoria dentro de los límites del tablero
 		// SERIA UN CHECK DE LA VARIABLE COLUMNA DE ARRIBA MAS LAS QUE TIENE QUE SER COLOCADAS
-		//si el lugar es en columna i y lugar en columna i +1 +2+ +4 0 hago algo 
-		
+		//si el lugar es en columna i y lugar en columna i +1 +2+ +4 0 hago algo 		
 		Repetir	
 		columna <- Aleatorio(1, 10 - barco[tipo] + 1);
         fila <- Aleatorio(1, 10);
