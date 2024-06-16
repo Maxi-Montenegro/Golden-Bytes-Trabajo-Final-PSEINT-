@@ -293,6 +293,7 @@ SubAlgoritmo mostrarTableroJugador(matrizJugador Por Referencia)
 	columnaLetras <- " ABCDEFGHIJ";
 	Dimension filaNumeros[10];
 	Definir tecla Como Caracter;
+	Definir esJugador Como Logico;
 	
 	para i <- 0 Hasta 9 Con Paso 1 Hacer
 		filaNumeros[i] <- i + 1 ;
@@ -311,7 +312,8 @@ SubAlgoritmo mostrarTableroJugador(matrizJugador Por Referencia)
 	
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		Escribir ""; 
-		mostrarValor(matrizJugador, columnaLetras, filaNumeros, i);	//llamo a la funcion para mostrar una matriz
+		esJugador <- Verdadero;
+		mostrarValor(matrizJugador, columnaLetras, filaNumeros, i, esJugador);	//llamo a la funcion para mostrar una matriz
 		Escribir "";
 	FinPara
 	Escribir "";
@@ -377,6 +379,7 @@ SubAlgoritmo mostrarTableroJugadorEnemigo(matrizJugador Por Referencia, matrizEn
 	Definir columnaLetras Como cadena;
 	columnaLetras <- " ABCDEFGHIJ";
 	Dimension filaNumeros[10];
+	Definir esJugador Como Logico;
 	Definir tecla Como Caracter;
 	
 	para i <- 0 Hasta 9 Con Paso 1 Hacer
@@ -389,8 +392,10 @@ SubAlgoritmo mostrarTableroJugadorEnemigo(matrizJugador Por Referencia, matrizEn
 	
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		Escribir ""; 
-		mostrarValor(matrizJugador, columnaLetras, filaNumeros, i);	//llamo a la funcion para mostrar una matriz
-		mostrarValor(matrizEnemigo, columnaLetras, filaNumeros, i);	
+		esJugador <- Verdadero;
+		mostrarValor(matrizJugador, columnaLetras, filaNumeros, i, esJugador);	//llamo a la funcion para mostrar una matriz
+		esJugador <- Falso;
+		mostrarValor(matrizEnemigo, columnaLetras, filaNumeros, i, esJugador);	
 		Escribir "";
 	FinPara
 	
@@ -399,7 +404,7 @@ SubAlgoritmo mostrarTableroJugadorEnemigo(matrizJugador Por Referencia, matrizEn
 	leer tecla;
 FinSubAlgoritmo
 
-SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, filaNumeros Por Referencia, i Por Valor)
+SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, filaNumeros Por Referencia, i Por Valor, esjugador Por Valor)
 	Definir j Como Entero;
 	
 	Escribir Sin Saltar "             "; // aqui centr? la matriz margen de izquierda a derecha
@@ -411,41 +416,77 @@ SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, f
 			Escribir Sin Saltar filaNumeros[j];
 			Escribir Sin Saltar "     "; // separacion entre los numeros
 		sino 
-			//Aqui imprimimos matriz 
-//			Escribir Sin Saltar matriz[i,j+1];
-//			Escribir Sin Saltar "     ";
-			si matriz[i,j+1] == -1 Entonces 
-				Escribir Sin Saltar "~"; // 
-				Escribir Sin Saltar "     ";
-			FinSi
-			si matriz[i,j+1] == 0 Entonces 
-				Escribir Sin Saltar "~"; // 
-				Escribir Sin Saltar "     "; // separacion del simbolo agua
-			FinSi
-			si matriz[i,j+1] == 1 Entonces 
-				
-				Escribir Sin Saltar "¶"; // 
-				Escribir Sin Saltar "     ";
-			FinSi
-			si matriz[i,j+1] < -1 Entonces 
-				Escribir Sin Saltar "*"; // 
-				Escribir Sin Saltar "     ";
-			FinSi
-			si matriz[i,j+1] == 6 Entonces 
-				Escribir Sin Saltar "L"; // 
-				Escribir Sin Saltar "     ";
-			FinSi
-			si matriz[i,j+1] == 7 Entonces 
-				Escribir Sin Saltar "S"; // 
-				Escribir Sin Saltar "     ";
-			FinSi
-			si matriz[i,j+1] == 8 Entonces 
-				Escribir Sin Saltar "C"; // 
-				Escribir Sin Saltar "     ";
-			FinSi
-			si matriz[i,j+1] == 9 Entonces 
-				Escribir Sin Saltar "P"; // 
-				Escribir Sin Saltar "     ";
+			//Aqui imprimimos matriz (MODO DEBUG) DESCOMITEAR ESTAS 2 LINEAS Y COMMITEAR LAS OTRAS
+//			Escribir Sin Saltar matriz[i,j+1]; // MODO DEBUG
+//			Escribir Sin Saltar "     "; // MODO DEBUG
+			Si esJugador Entonces
+				si matriz[i,j+1] == -1 Entonces 
+					Escribir Sin Saltar "A"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+				si matriz[i,j+1] == 0 Entonces 
+					Escribir Sin Saltar "~"; // 
+					Escribir Sin Saltar "     "; // separacion del simbolo agua
+				FinSi
+				si matriz[i,j+1] == 1 Entonces 
+					
+					Escribir Sin Saltar "¶"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+				si matriz[i,j+1] < -1 Entonces 
+					Escribir Sin Saltar "*"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+				si matriz[i,j+1] == 6 Entonces 
+					Escribir Sin Saltar "L"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+				si matriz[i,j+1] == 7 Entonces 
+					Escribir Sin Saltar "S"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+				si matriz[i,j+1] == 8 Entonces 
+					Escribir Sin Saltar "C"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+				si matriz[i,j+1] == 9 Entonces 
+					Escribir Sin Saltar "P"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+			SiNo
+				si matriz[i,j+1] == -1 Entonces 
+					Escribir Sin Saltar "A"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+				si matriz[i,j+1] == 0 Entonces 
+					Escribir Sin Saltar "~"; // 
+					Escribir Sin Saltar "     "; // separacion del simbolo agua
+				FinSi
+				si matriz[i,j+1] == 1 Entonces 
+					
+					Escribir Sin Saltar "¶"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+				si matriz[i,j+1] < -1 Entonces 
+					Escribir Sin Saltar "*"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+				si matriz[i,j+1] == 6 Entonces 
+					Escribir Sin Saltar "L"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+				si matriz[i,j+1] == 7 Entonces 
+					Escribir Sin Saltar "S"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+				si matriz[i,j+1] == 8 Entonces 
+					Escribir Sin Saltar "C"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
+				si matriz[i,j+1] == 9 Entonces 
+					Escribir Sin Saltar "P"; // 
+					Escribir Sin Saltar "     ";
+				FinSi
 			FinSi
 
 		FinSi
@@ -589,7 +630,7 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
 		Repetir	
 		columna <- Aleatorio(1, 10 - barco[tipo] + 1);
         fila <- Aleatorio(1, 10);
-		Hasta Que matrizEnemigo[fila,columna] == 0 y matrizEnemigo[fila,columna+1] == 0 y matrizEnemigo[fila,columna+2] == 0 y matrizEnemigo[fila,columna+3] == 0
+		Hasta Que matrizEnemigo[fila,columna] == 0 y matrizEnemigo[fila,columna+1] == 0 y matrizEnemigo[fila,columna+2] == 0
         // Colocar el barco en la matriz
         h <- 0;
 		
