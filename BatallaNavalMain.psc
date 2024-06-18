@@ -11,8 +11,8 @@ Proceso BatallaNavalMain
 	Borrar Pantalla;
 	//textoEstatico();
 	//Borrar Pantalla;
-//	Animacion();
-//	Borrar Pantalla;
+	//	Animacion();
+	//	Borrar Pantalla;
 	MensajeBienvenida(Nombre_Jugador);
 	Borrar Pantalla;
 	
@@ -21,7 +21,7 @@ Proceso BatallaNavalMain
 		escribir "";
 		Escribir "1- Jugar"; // aqui se redirige al subalgoritmo "mostrarTableroJugador(matrizJugador Por Referencia)"
 		Escribir "2- Reglas del juego";
-		Escribir "3- Creditos";// aqui se redirige al subalgoritmo "creditos ?"
+		Escribir "3- Creditos";// aqui se redirige al subalgoritmo "creditos" 
 		Escribir "4- Salir";
 		Escribir sin saltar "Digite la opcion de menu:";
 		Leer opcion;
@@ -33,7 +33,7 @@ Proceso BatallaNavalMain
 			2:
 				ReglasDelJuego();
 			3:
-				Escribir "Creditos"; //falta crear esto
+				Creditos();
 			4:
 				finDelJuego(nombre_jugador);
 			De Otro Modo:
@@ -42,6 +42,189 @@ Proceso BatallaNavalMain
 	Hasta Que opcion == 4
 	
 FinProceso
+
+SubAlgoritmo mensajeAmpliarPantalla
+	
+	Definir tecla Como Caracter;
+	Escribir "                    PARA UNA MEJOR EXPERIENCIA DE JUEGO";
+	Escribir "                 ABRA A PANTALLA COMPLETA Y PRESIONE ENTER";
+	Leer TECLA;
+	Borrar Pantalla;
+	
+FinSubAlgoritmo
+
+// En este SubProceso mostramos la portada de presentacion
+SubAlgoritmo  textoEstatico
+	
+    definir tecla Como Caracter;
+	// Esta seria la pantalla inicial a modo de caratula 
+	
+	
+	Escribir "";
+	Escribir "";
+	Escribir "";
+	Escribir "                                                                            Universidad Tecnologica Nacional";
+	Escribir "";
+	Escribir "                                                                              Facultad Regional San Rafael";
+	Escribir "";
+	Escribir "";
+	Escribir "                                                                                  Proyecto Integrador";
+	Escribir "";
+	Escribir "                                                                                  T.U.P COHORTE 2024"; 
+	
+	Escribir "";
+	Escribir "";
+	Escribir "";
+	
+	Escribir "                                                     ............................................................................. ";
+    Escribir "                                                     ............................................................................. ";
+    Escribir "                                                     ............................................................................. ";
+    Escribir "                                                     ... GOLDEN       ****  ****  ****    **    ****  *    *  *****      *     ... ";
+    Escribir "                                                     ...      BYTES   *  *  *  *  *      *   *  *     * *  *    *       * *    ... ";
+    Escribir "                                                     ...              ****  ****  ***      \    ***   *  * *    *      *   *   ... ";
+    Escribir "                                                     ...              *     * *   *     *   *   *     *    *    *     *******  ... ";
+    Escribir "                                                     ...              *     *  *  ****    **    ****  *    *    *    *       * ... ";
+    Escribir "                                                     ............................................................................. ";
+    Escribir "                                                     ............................................................................. ";
+    Escribir "                                                     ............................................................................. ";
+	Escribir "";
+	Escribir "";
+    Escribir "                                                                       Presione Enter para continuar...";
+    Leer tecla;
+		
+FinSubAlgoritmo
+
+// Este subproceso es una animacion que muestra el nombre de nuestro juego
+SubProceso Animacion
+	
+	Definir logo Como caracter;
+	Definir i,j Como Entero;
+	Definir tecla Como Caracter;
+	
+	Dimension logo[24];	// Definimos un arreglo que contenga los caracteres que formaran la animacion
+	
+	// cargamos manualmente el arreglo para lograr el efecto deseado
+	
+	logo[1] <- "      8 888888888o           .8.    8888888 8888888888    .8.          8 8888         8 8888                  .8.";          
+	logo[2] <- "      8 8888    `88.        .888.         8 8888         .888.         8 8888         8 8888                 .888.";         
+	logo[3] <- "      8 8888     `88       :88888.        8 8888        :88888.        8 8888         8 8888                :88888.";        
+	logo[4] <- "      8 8888     ,88      . `88888.       8 8888       . `88888.       8 8888         8 8888               . `88888.";       
+	logo[5] <- "      8 8888.   ,88?     .8. `88888.      8 8888      .8. `88888.      8 8888         8 8888              .8. `88888.";      
+	logo[6] <- "      8 8888888888      .8`8. `88888.     8 8888     .8`8. `88888.     8 8888         8 8888             .8`8. `88888.";     
+	logo[7] <- "      8 8888    `88.   .8? `8. `88888.    8 8888    .8? `8. `88888.    8 8888         8 8888            .8? `8. `88888.";    
+	logo[8] <- "      8 8888      88  .8?   `8. `88888.   8 8888   .8?   `8. `88888.   8 8888         8 8888           .8?   `8. `88888.";   
+	logo[9] <- "      8 8888    ,88? .888888888. `88888.  8 8888  .888888888. `88888.  8 8888         8 8888          .888888888. `88888.";  
+	logo[10]<- "      8 888888888P  .8?       `8. `88888. 8 8888. 8?       `8. `88888. 8 888888888888 8 888888888888 .8?       `8. `88888.";
+	logo[11]<- "                                    ";
+	logo[12]<- "                                    ";
+	logo[13]<- "                                    ";
+	logo[14]<- "                                                                    b.             8            .8.   `8.`888b           ,8?   .8.            8 8888";
+	logo[15]<- "                                                                    888o.          8           .888.   `8.`888b         ,8?   .888.           8 8888";
+	logo[16]<- "                                                                    Y88888o.       8          :88888.   `8.`888b       ,8?   :88888.          8 8888";
+	logo[17]<- "                                                                    .`Y888888o.    8         . `88888.   `8.`888b     ,8?   . `88888.         8 8888";
+	logo[18]<- "                                                                    8o. `Y888888o. 8        .8. `88888.   `8.`888b   ,8?   .8. `88888.        8 8888";
+	logo[19]<- "                                                                    8`Y8o. `Y88888o8       .8`8. `88888.   `8.`888b ,8?   .8`8. `88888.       8 8888";         
+	logo[20]<- "                                                                    8   `Y8o. `Y8888      .8? `8. `88888.   `8.`888b8?   .8? `8. `88888.      8 8888";
+	logo[21]<- "                                                                    8      `Y8o. `Y8     .8?   `8. `88888.   `8.`888?   .8?   `8. `88888.     8 8888";
+	logo[22]<- "                                                                    8         `Y8o.`    .888888888. `88888.   `8.`8?   .888888888. `88888.    8 8888";
+	logo[23]<- "                                                                    8            `Yo   .8?       `8. `88888.   `8.`   .8?       `8. `88888.   8 888888888888";
+	
+	// Para hacer aparecer el logo gradualmente recorremos el arreglo y le damos un tiempo de 150 milisegundos
+	// de duracion
+	Para i <- 1 Hasta 23 Hacer
+		Escribir "";
+		Borrar Pantalla;
+		para j <- 1 hasta i Hacer
+			Si j <= Longitud(logo[j]) Entonces
+				Escribir logo[j];
+			FinSi
+		FinPara
+		Esperar 150 Milisegundos;
+	FinPara
+	
+	
+	
+	// Para hacer desaparecer el logo gradualmente recorremos el arreglo de manera inversa dandole el valor de -1 al paso 
+	Para i <- 23 Hasta 1 Con Paso -1 Hacer
+		Borrar Pantalla;
+		Escribir ""; 
+		para j <- 1 hasta i Hacer
+			Si j <= Longitud(logo[j]) Entonces
+				Escribir logo[j];
+			FinSi
+		FinPara
+		Esperar 200 Milisegundos;
+	FinPara
+	Para i <- 1 Hasta 23 Hacer
+		Escribir logo[i];
+	FinPara
+	
+	// escribimos un mensaje para mejorar la experiencia del jugador
+	
+	Escribir "";
+	Escribir "";
+	Escribir "";
+	Escribir "";
+	Escribir "                                                                                ***EL JUEGO COMIENZA***";
+	
+	Escribir "";
+	Escribir "";
+	Escribir "";
+	Escribir "                                                                              Presiona Enter para continuar...";
+	Leer tecla;
+	
+	
+FinSubProceso
+
+// Aqui Damos un Mensaje de Bienvenida al Jugador 
+
+SubProceso MensajeBienvenida (nombre_jugador Por Referencia)
+	Definir confirmacion Como Caracter; //variable para Si o No
+	Definir min_longitud como entero; //longitud minima del nombre
+	min_longitud <- 3; //Longitud minima para el nombre
+	Definir tecla Como Caracter;
+	
+	Escribir "";
+	Escribir "";
+	Escribir "";
+	Escribir "";
+	Escribir "";
+	Escribir "                                                                              ¡¡¡ Bienvenido Soldado !!!";
+	Escribir "";
+	Escribir "                                                                   Estas Listo y preparado para esta Gran Aventura";
+	Escribir "";
+	Escribir "                                                                                 Presentate Soldado ";
+	Escribir "";
+	Repetir
+		
+		Escribir "                                                                       Escribe Tu Nombre (mínimo ", min_longitud, " caracteres):";
+		leer nombre_jugador ;
+		Si longitud(nombre_jugador) < min_longitud Entonces
+			Escribir "El nombre debe tener al menos ", min_longitud, " caracteres. Inténtalo de nuevo.";
+		Sino
+			// Confirmar el nombre ingresado
+			Escribir "¿Es correcto el nombre ", nombre_jugador, "? (S/N):";
+			Leer confirmacion;	
+			// Convertir la confirmación a mayúscula para simplificar la comparación
+			confirmacion <- Mayusculas(confirmacion);
+		FinSi
+    Hasta Que longitud(nombre_jugador) >= min_longitud Y confirmacion = "S"
+    Escribir "Nombre confirmado: ",nombre_jugador;
+	Escribir "";
+	Escribir "                                                             Perfecto soldado"," ", nombre_jugador, " ¡¡¡ Que comience la Batalla !!!";
+	
+	Escribir "";
+	Escribir "";
+	
+	Escribir "                                                                           Pesione Enter para continuar...";
+	leer tecla;
+	Escribir "";
+	Escribir "";
+	Escribir "";
+	Escribir "";
+	
+FinSubProceso
+
 
 SubAlgoritmo batallaNavalLoop(nombre_jugador Por Referencia)
 	
@@ -96,7 +279,7 @@ SubAlgoritmo batallaNavalLoop(nombre_jugador Por Referencia)
 	Si ganar Entonces
 		Escribir "Felicitaciones ha ganado!!!";
 	SiNo
-		Escribir "Vamos que puede empezar de nuevo";
+		Escribir "No te rindas, vuelve a jugar";
 	FinSi
 	
 	//Mostrar mensaje de agradecimiento al final del juego
@@ -104,191 +287,7 @@ SubAlgoritmo batallaNavalLoop(nombre_jugador Por Referencia)
 	
 FinSubAlgoritmo
 
-SubAlgoritmo mensajeAmpliarPantalla
-	
-	Definir tecla Como Caracter;
-	Escribir "                    PARA UNA MEJOR EXPERIENCIA DE JUEGO";
-	Escribir "                 ABRA A PANTALLA COMPLETA Y PRESIONE ENTER";
-	Leer TECLA;
-	
-FinSubAlgoritmo
-
-
-
-// Eset subproceso es una animacion que muestra el nombre de nuestro juego
-SubProceso Animacion
-	
-	Definir logo Como caracter;
-	Definir i,j Como Entero;
-	Definir tecla Como Caracter;
-	
-	Dimension logo[24];	// Definimos un arreglo que contenga los caracteres que formaran la animacion
-	
-	// cargamos manualmente el arreglo para lograr el efecto deseado
-	
-	logo[1] <- "      8 888888888o           .8.    8888888 8888888888    .8.          8 8888         8 8888                  .8.";          
-	logo[2] <- "      8 8888    `88.        .888.         8 8888         .888.         8 8888         8 8888                 .888.";         
-	logo[3] <- "      8 8888     `88       :88888.        8 8888        :88888.        8 8888         8 8888                :88888.";        
-	logo[4] <- "      8 8888     ,88      . `88888.       8 8888       . `88888.       8 8888         8 8888               . `88888.";       
-	logo[5] <- "      8 8888.   ,88?     .8. `88888.      8 8888      .8. `88888.      8 8888         8 8888              .8. `88888.";      
-	logo[6] <- "      8 8888888888      .8`8. `88888.     8 8888     .8`8. `88888.     8 8888         8 8888             .8`8. `88888.";     
-	logo[7] <- "      8 8888    `88.   .8? `8. `88888.    8 8888    .8? `8. `88888.    8 8888         8 8888            .8? `8. `88888.";    
-	logo[8] <- "      8 8888      88  .8?   `8. `88888.   8 8888   .8?   `8. `88888.   8 8888         8 8888           .8?   `8. `88888.";   
-	logo[9] <- "      8 8888    ,88? .888888888. `88888.  8 8888  .888888888. `88888.  8 8888         8 8888          .888888888. `88888.";  
-	logo[10]<- "      8 888888888P  .8?       `8. `88888. 8 8888. 8?       `8. `88888. 8 888888888888 8 888888888888 .8?       `8. `88888.";
-	logo[11]<- "                                    ";
-	logo[12]<- "                                    ";
-	logo[13]<- "                                    ";
-	logo[14]<- "                                                                    b.             8            .8.   `8.`888b           ,8?   .8.            8 8888";
-	logo[15]<- "                                                                    888o.          8           .888.   `8.`888b         ,8?   .888.           8 8888";
-	logo[16]<- "                                                                    Y88888o.       8          :88888.   `8.`888b       ,8?   :88888.          8 8888";
-	logo[17]<- "                                                                    .`Y888888o.    8         . `88888.   `8.`888b     ,8?   . `88888.         8 8888";
-	logo[18]<- "                                                                    8o. `Y888888o. 8        .8. `88888.   `8.`888b   ,8?   .8. `88888.        8 8888";
-	logo[19]<- "                                                                    8`Y8o. `Y88888o8       .8`8. `88888.   `8.`888b ,8?   .8`8. `88888.       8 8888";         
-	logo[20]<- "                                                                    8   `Y8o. `Y8888      .8? `8. `88888.   `8.`888b8?   .8? `8. `88888.      8 8888";
-	logo[21]<- "                                                                    8      `Y8o. `Y8     .8?   `8. `88888.   `8.`888?   .8?   `8. `88888.     8 8888";
-	logo[22]<- "                                                                    8         `Y8o.`    .888888888. `88888.   `8.`8?   .888888888. `88888.    8 8888";
-	logo[23]<- "                                                                    8            `Yo   .8?       `8. `88888.   `8.`   .8?       `8. `88888.   8 888888888888";
-	
-	// Para hacer aparecer el logo gradualmente recorremos el arreglo 
-	Para i <- 1 Hasta 23 Hacer
-		Escribir "";
-		Borrar Pantalla;
-		para j <- 1 hasta i Hacer
-			Si j <= Longitud(logo[j]) Entonces
-				Escribir logo[j];
-			FinSi
-		FinPara
-		Esperar 150 Milisegundos;
-	FinPara
-	
-	
-	
-	// Para hacer desaparecer el logo gradualmente recorremos el arreglo de manera inversa
-	Para i <- 23 Hasta 1 Con Paso -1 Hacer
-		Borrar Pantalla;
-		Escribir ""; 
-		para j <- 1 hasta i Hacer
-			Si j <= Longitud(logo[j]) Entonces
-				Escribir logo[j];
-			FinSi
-		FinPara
-		Esperar 200 Milisegundos;
-	FinPara
-	Para i <- 1 Hasta 23 Hacer
-		Escribir logo[i];
-	FinPara
-	
-	// escribimos un mensaje para mejorar la experiencia del jugador
-	
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	Escribir "                                                                                ***EL JUEGO COMIENZA***";
-	
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	Escribir "                                                                              Presione Enter para continuar...";
-	Leer tecla;
-	
-	
-FinSubProceso
-
-// En este subproceso damos inicio a la portada del juego
-
-SubProceso textoEstatico
-	
-    definir tecla Como Caracter;
-	// Esta seria la pantalla inicial a modo de caratula 
-	
-	
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	Escribir "                                                                            Universidad Tecnologica Nacional";
-	Escribir "";
-	Escribir "                                                                              Facultad Regional San Rafael";
-	Escribir "";
-	Escribir "";
-	Escribir "                                                                                  Proyecto Integrador";
-	Escribir "";
-	Escribir "                                                                                  T.U.P COHORTE 2024"; 
-	
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	
-	Escribir "                                                     ............................................................................. ";
-    Escribir "                                                     ............................................................................. ";
-    Escribir "                                                     ............................................................................. ";
-    Escribir "                                                     ... GOLDEN       ****  ****  ****    **    ****  *    *  *****      *     ... ";
-    Escribir "                                                     ...      BYTES   *  *  *  *  *      *   *  *     * *  *    *       * *    ... ";
-    Escribir "                                                     ...              ****  ****  ***      \    ***   *  * *    *      *   *   ... ";
-    Escribir "                                                     ...              *     * *   *     *   *   *     *    *    *     *******  ... ";
-    Escribir "                                                     ...              *     *  *  ****    **    ****  *    *    *    *       * ... ";
-    Escribir "                                                     ............................................................................. ";
-    Escribir "                                                     ............................................................................. ";
-    Escribir "                                                     ............................................................................. ";
-	Escribir "";
-	Escribir "";
-    Escribir "                                                                       Presione Enter para continuar...";
-    Leer tecla;
-	
-	
-FinSubProceso
-
-// Aqui Damos un Mensaje de Bienvenida al Jugador 
-
-SubProceso MensajeBienvenida (nombre_jugador Por Referencia)
-	Definir confirmacion Como Caracter; //variable para Si o No
-	Definir min_longitud como entero; //longitd minima del nombre
-	min_longitud <- 3; //Longitud minima para el nombre
-	Definir tecla Como Caracter;
-	
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	Escribir "                                                                              ? Bienvenido Soldado !!!";
-	Escribir "";
-	Escribir "                                                                   Estas Listo y preparado para esta Gran Aventura";
-	Escribir "";
-	Escribir "                                                                                 Presentate Soldado ";
-	Escribir "";
-	Repetir
-		
-		Escribir "                                                                       Escribe Tu Nombre (mínimo ", min_longitud, " caracteres):";
-		leer nombre_jugador ;
-		Si longitud(nombre_jugador) < min_longitud Entonces
-			Escribir "El nombre debe tener al menos ", min_longitud, " caracteres. Inténtalo de nuevo.";
-		Sino
-			// Confirmar el nombre ingresado
-			Escribir "¿Es correcto el nombre ", nombre_jugador, "? (S/N):";
-			Leer confirmacion;	
-			// Convertir la confirmación a mayúscula para simplificar la comparación
-			confirmacion <- Mayusculas(confirmacion);
-		FinSi
-    Hasta Que longitud(nombre_jugador) >= min_longitud Y confirmacion = "S"
-    Escribir "Nombre confirmado: ",nombre_jugador;
-	Escribir "";
-	Escribir "                                                             Perfecto soldado"," ", nombre_jugador, " ??? Que comience la Batalla !!!";
-	
-	Escribir "";
-	Escribir "";
-	
-	Escribir "                                                                           Pesione Enter para continuar...";
-	leer tecla;
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	Escribir "";
-	
-FinSubProceso
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
+// En este subproceso le mostramos el tablero que utilizara el jugador
 
 SubAlgoritmo mostrarTableroJugador(matrizJugador Por Referencia)
 	Definir i,j, filaNumeros Como Entero;
@@ -303,8 +302,8 @@ SubAlgoritmo mostrarTableroJugador(matrizJugador Por Referencia)
 		
 	FinPara 
 	
-	Escribir "Este es su tablero piense en donde ubicar sus barcos"; 
-	// Lleno matriz del con 0
+	Escribir "Este es tu tablero piensa en donde ubicar tus barcos"; 
+	
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		para j <- 0 Hasta 10 Con Paso 1 Hacer
 			Escribir Sin Saltar "    "; //centrado de la matriz margen superior
@@ -320,14 +319,16 @@ SubAlgoritmo mostrarTableroJugador(matrizJugador Por Referencia)
 		Escribir "";
 	FinPara
 	Escribir "";
-	Escribir "                                                                           Presione Enter para continuar...";
+	Escribir "                                                                           Presiona Enter para continuar...";
 	leer tecla;
 FinSubAlgoritmo
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
 
+// En este subproceso le indicamos al juagdor para que coloque sus barcos en el tablero
+
 SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
-	Escribir "ingrese la posicion horizontal donde ubicar su barco";
+	Escribir "ingresa la posicion horizontal donde ubicar tu barco";
 	Definir posicion, columna, fila, i, j,num como Entero;
 	Definir arregloLetras, dato, aux Como Caracter;
 	Definir columnaLetras como cadena;
@@ -342,9 +343,9 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
 	
 	
 	// Solicitar columna y fila al usuario
-	Escribir "elija en que columna quiere colocar su barco (1-2-3-4-5-6-7-8-9-10) ";
+	Escribir "elije en que columna quieres colocar tu barco (1-2-3-4-5-6-7-8-9-10) ";
 	Leer columna;
-	Escribir "elija en que fila quiere colocar su barco (A-B-C-D-E-F-G-H-I-J) ";
+	Escribir "elije en que fila quieres colocar tu barco (A-B-C-D-E-F-G-H-I-J) ";
 	Leer dato;
 	dato <- Mayusculas(dato);
 	encontrado <- falso;
@@ -396,7 +397,7 @@ SubAlgoritmo mostrarTableroJugadorEnemigo(matrizJugador Por Referencia, matrizEn
 		
 	FinPara 
 	
-	Escribir "Este es su tablero                                                                        Este es el tablero del enemigo"; 
+	Escribir "Este es tu tablero                                                                        Este es el tablero del enemigo"; 
 	
 	
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
@@ -409,16 +410,16 @@ SubAlgoritmo mostrarTableroJugadorEnemigo(matrizJugador Por Referencia, matrizEn
 	FinPara
 	
 	Escribir "";
-	Escribir "                                                                           Presione Enter para continuar...";
+	Escribir "                                                                           Presiona Enter para continuar...";
 	leer tecla;
 FinSubAlgoritmo
 
 SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, filaNumeros Por Referencia, i Por Valor, esjugador Por Valor)
 	Definir j Como Entero;
 	
-	Escribir Sin Saltar "             "; // aqui centr? la matriz margen de izquierda a derecha
+	Escribir Sin Saltar "             "; // aqui centramos la matriz margen de izquierda a derecha
 	Escribir Sin Saltar Subcadena(columnaLetras, i, i);
-	Escribir Sin Saltar "     ";// separacion de la matris de las primera columna	
+	Escribir Sin Saltar "     ";// separacion de la matriz de la primera columna	
 	
 	para j<-0 Hasta 9 Con Paso 1 Hacer
 		si i == 0 Entonces// si true muestro los numeros
@@ -506,7 +507,7 @@ FinSubAlgoritmo
 
 // Esta funcion permite atacar al enemigo
 SubAlgoritmo ataqueDelJugador(matrizEnemigo Por Referencia, contadorBarcosEnemigo Por Referencia)
-	Escribir "Ingrese la coordenada a atacar en la matriz del enemigo";
+	Escribir "Ingresa la coordenada para atacar al enemigo";
 	Definir posicion, columna, fila, i, j como Entero;
 	Definir arregloLetras, dato, aux Como Caracter;
 	Definir columnaLetras como cadena;
@@ -520,9 +521,9 @@ SubAlgoritmo ataqueDelJugador(matrizEnemigo Por Referencia, contadorBarcosEnemig
 	FinPara
 	
 	// Solicitar columna y fila al usuario
-	Escribir "Elija la columna para atacar (1-2-3-4-5-6-7-8-9-10) ";
+	Escribir "Elije la columna para atacar (1-2-3-4-5-6-7-8-9-10) ";
 	Leer columna;
-	Escribir "Elija la fila para atacar (A-B-C-D-E-F-G-H-I-J) ";
+	Escribir "Elije la fila para atacar (A-B-C-D-E-F-G-H-I-J) ";
 	Leer dato;
 	dato <- Mayusculas(dato);
 	encontrado <- falso;
@@ -663,24 +664,10 @@ SubAlgoritmo ataqueDelEnemigo(matrizJugador Por Referencia, contadorBarcosJugado
 			
 		De Otro Modo:
 	FinSegun
-	
-	
+		
 FinSubAlgoritmo
 
-SubAlgoritmo finDelJuego(nombre_jugador por referencia)
-	Definir tecla Como Caracter;
-    // Mostrar mensaje de agradecimiento al usuario
-	Escribir "";
-    Escribir "¡Gracias por jugar, ", nombre_jugador, "! Esperamos que hayas disfrutado del juego.";
-    Escribir "Recuerda: Si lo puedes imaginar, lo puedes programar.";
-	Escribir "Ariel Bentancud";
-	Escribir "";
-	Escribir "                                                                           Presione Enter para continuar...";
-	leer tecla;
-	Borrar Pantalla;
-FinSubAlgoritmo
-
-SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
+SubAlgoritmo   colocar_barcos_enemigo(matrizEnemigo Por Referencia)
     definir columna,fila, i, j,tipo,h Como Entero;
     
 	// Inicializar la matriz con agua (0 representa agua)
@@ -745,14 +732,29 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
 	leer tecla;
 	Escribir "";
     
-FinSubProceso
+FinSubAlgoritmo
+
+SubAlgoritmo finDelJuego(nombre_jugador por referencia)
+	Definir tecla Como Caracter;
+    // Mostrar mensaje de agradecimiento al usuario
+	Escribir "";
+    Escribir "¡Gracias por jugar, ", nombre_jugador, "! Esperamos que hayas disfrutado del juego.";
+    Escribir "Recuerda: Si lo puedes imaginar, lo puedes programar.";
+	Escribir "Ariel Bentancud";
+	Escribir "";
+	Escribir "                                                                           Presiona enter para continuar...";
+	leer tecla;
+	Borrar Pantalla;
+FinSubAlgoritmo
 
 
-SubProceso ReglasDelJuego
+
+
+SubAlgoritmo  ReglasDelJuego
 	
-	
+	Escribir "===========================================================================================================================================================================================";
 	Escribir "                                                                                    Reglas del juego"; 
-	Escribir "*************************************************************************************************************************++++**************************************************";
+	Escribir "===========================================================================================================================================================================================";
 	Escribir "";
 	Escribir " Las reglas de la batalla naval son";
 	Escribir "";
@@ -787,4 +789,38 @@ SubProceso ReglasDelJuego
 	Escribir "                                                                                       ¡A JUGAR!";
 
 	Escribir "";
-FinSubProceso
+FinSubAlgoritmo
+
+SubAlgoritmo Creditos
+	
+	definir tecla Como Caracter;
+	
+	Escribir "                                                    ===================================================";
+    Escribir "                                                                        Créditos     ";
+    Escribir "                                                    ===================================================";
+    Escribir "                                                             Desarrollado por:**GOLDEN BYTES** ";
+    Escribir "                                                              - Maxi Montenegro";
+    Escribir "                                                              - Irene Machuca";
+    Escribir "                                                              - Valentin Felipe";
+	Escribir "                                                              - Felipe Landi";
+	Escribir "                                                              - Leonardo Gomez ";
+	Escribir "                                                              - Ezequiel Quiroz";
+	Escribir "                                                              - Franco Poblete";
+	Escribir "";	
+    Escribir "                                                             Agradecimientos especiales a:";
+    Escribir "                                                              - Profesor Ariel Betancud";
+    Escribir "                                                              - Profesora Natalia Lucero";
+	Escribir "                                                              - Profesor Osvaldo Giordanini";
+    Escribir "                                                    ===================================================";
+	Escribir "                                                                 © 2024 Golden Bytes";
+    Escribir "                                                             Todos los derechos reservados.";
+    Escribir "                                                      Este juego y su contenido no pueden ser copiados,";
+    Escribir "                                                      distribuidos o utilizados sin autorización previa.";
+    Escribir "                                                    ===================================================";
+	Escribir "                                                       PRESIONE ENTER PARA VOLVER AL MENU PRINCIPAL";
+	Leer tecla;
+	Borrar Pantalla;
+	
+	
+FinSubAlgoritmo
+	
