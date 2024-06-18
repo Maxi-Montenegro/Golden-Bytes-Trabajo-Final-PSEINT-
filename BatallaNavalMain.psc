@@ -3,10 +3,10 @@
 
 
 Proceso BatallaNavalMain
-
+	
 	Definir nombre_jugador Como Caracter;
 	Definir opcion Como Entero;
-	 	
+	
 	mensajeAmpliarPantalla();
 	Borrar Pantalla;
 	//textoEstatico();
@@ -40,7 +40,7 @@ Proceso BatallaNavalMain
 				Escribir "Se equivocó de opcion de menu.";
 		FinSegun
 	Hasta Que opcion == 4
-		
+	
 FinProceso
 
 SubAlgoritmo batallaNavalLoop(nombre_jugador Por Referencia)
@@ -52,7 +52,7 @@ SubAlgoritmo batallaNavalLoop(nombre_jugador Por Referencia)
 	Dimension matrizEnemigo[11,11];
 	Definir ganar, perder Como Logico;
 	Dimension contadorBarcosEnemigo[5], contadorBarcosJugador[5] ;
-		
+	
 	//contador enemigo
     contadorBarcosEnemigo[1] <- 4; // tamaño del portaviones
     contadorBarcosEnemigo[2] <- 4; // tamaño del crucero
@@ -74,9 +74,10 @@ SubAlgoritmo batallaNavalLoop(nombre_jugador Por Referencia)
 	Repetir
 		mostrarTableroJugadorEnemigo(matrizJugador, matrizEnemigo);
 		ataqueDelJugador(matrizEnemigo, contadorBarcosEnemigo);
-		//ataqueDelEnemigo(matrizJugador, contadorBarcosJugador) //atacar enemigo
+		ataqueDelEnemigo(matrizJugador, contadorBarcosJugador); //atacar enemigo
+		
 		i <-1;
-		ganar <- Verdadero;
+		ganar <- Verdadero;		
 		
 		Mientras i < 5 y (ganar == Verdadero) hacer
 			ganar <- contadorBarcosEnemigo[i] == 0 ;
@@ -287,6 +288,8 @@ SubProceso MensajeBienvenida (nombre_jugador Por Referencia)
 	
 FinSubProceso
 
+//-----------------------------------------------------------------------------------------------------------------------------------------------------
+
 SubAlgoritmo mostrarTableroJugador(matrizJugador Por Referencia)
 	Definir i,j, filaNumeros Como Entero;
 	Definir columnaLetras Como cadena;
@@ -321,9 +324,11 @@ SubAlgoritmo mostrarTableroJugador(matrizJugador Por Referencia)
 	leer tecla;
 FinSubAlgoritmo
 
+//-------------------------------------------------------------------------------------------------------------------------------------------------------
+
 SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
 	Escribir "ingrese la posicion horizontal donde ubicar su barco";
-	Definir posicion, columna, fila, i, j como Entero;
+	Definir posicion, columna, fila, i, j,num como Entero;
 	Definir arregloLetras, dato, aux Como Caracter;
 	Definir columnaLetras como cadena;
 	Definir encontrado Como Logico; 
@@ -335,7 +340,7 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
 		arregloLetras[i] <- SubCadena(columnaLetras,i,i);
 	FinPara
 	
-
+	
 	// Solicitar columna y fila al usuario
 	Escribir "elija en que columna quiere colocar su barco (1-2-3-4-5-6-7-8-9-10) ";
 	Leer columna;
@@ -357,20 +362,24 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matrizJugador Por Referencia)
     // Mostrar la matriz con los barcos colocados automáticamente
     Escribir "Los barcos han sido colocados correctamente:";
 	Escribir "";
+
 	
 	
-	// Colocamos el barco de 3
+	// Colocamos el barco de 4
 	si columna == 10 entonces 
-		
+		matrizJugador[fila, columna-3] <- 1;
 		matrizJugador[fila, columna-2] <- 1;
 		matrizJugador[fila, columna-1] <- 1;
 		matrizJugador[fila, columna] <- 1;
 	SiNo
+		matrizJugador[fila, columna+3] <- 1;
 		matrizJugador[fila, columna+2] <- 1;
 		matrizJugador[fila, columna+1] <- 1;
 		matrizJugador[fila, columna] <- 1;
 		
 	FinSi
+	
+	
 	
 FinSubAlgoritmo
 
@@ -488,7 +497,7 @@ SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, f
 					Escribir Sin Saltar "     ";
 				FinSi
 			FinSi
-
+			
 		FinSi
 	FinPara
 	
@@ -573,12 +582,89 @@ SubAlgoritmo ataqueDelJugador(matrizEnemigo Por Referencia, contadorBarcosEnemig
 				Escribir "Genial soldado, le diste al portaviones del enemigo.";
 				contadorBarcosEnemigo[1] <- contadorBarcosEnemigo[1] - 1;
 			FinSi
-						
+			
 		De Otro Modo:
 			Escribir "Ya has atacado aqui, turno del enemigo";
 	FinSegun
 	
+	
+FinSubAlgoritmo
 
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Esta funcion permite que el enemigo ataque
+SubAlgoritmo ataqueDelEnemigo(matrizJugador Por Referencia, contadorBarcosJugador Por Referencia)
+	
+	Definir posicion, columna, fila, i, j como Entero;
+	Definir arregloLetras, dato, aux Como Caracter;
+	Definir columnaLetras como cadena;
+	Definir encontrado Como Logico; 
+	Definir letra Como Caracter;
+	Dimension arregloLetras(11);
+	
+	columnaLetras <- " ABCDEFGHIJ";
+	
+	
+	Para i<-0 Hasta 10 Con Paso 1 Hacer
+		arregloLetras[i] <- SubCadena(columnaLetras,i,i);
+	FinPara
+	
+	// Tomar valores al azar de filas y columnas para atacar 
+	columna <- Aleatorio(1,10);
+	dato <- Subcadena(columnaLetras ,i,i);
+	
+	dato <- Mayusculas(dato);
+	encontrado <- falso;
+	fila <- Aleatorio(1,10) ;
+	
+	
+	i<-1;//  Empezamos desde el 1 para no contar al espacio como encontrado
+	// Busqueda secuencial
+	mientras (i<11 y encontrado = Falso ) Hacer
+		Si (arregloLetras[i] = dato) Entonces
+			encontrado <- Verdadero;
+			fila <-i;
+		FinSi
+		i <- i +1;
+	FinMientras
+
+	//Verficar coordenadas
+	Segun matrizJugador[fila, columna] Hacer
+		0:
+			matrizJugador[fila, columna] <- -1; // -1 representa agua
+		6: // formato de la lancha
+			matrizJugador[fila, columna] <- -6;// representa lancha dañado
+			Si contadorBarcosJugador[4] == 1 Entonces
+				contadorBarcosJugador[4] <- contadorBarcosJugador[4] - 1;
+			SiNo
+				contadorBarcosJugador[4] <- contadorBarcosJugador[4] - 1;
+			FinSi
+		7: // formato del submarino
+			matrizJugador[fila, columna] <- -7; // representa submarino dañado
+			Si contadorBarcosJugador[3] == 1 Entonces
+				contadorBarcosJugador[3] <- contadorBarcosJugador[3] - 1;
+			SiNo
+				contadorBarcosJugador[3] <- contadorBarcosJugador[3] - 1;
+			FinSi
+		8: // formato del crucero
+			matrizJugador[fila, columna] <- -8; // representa crucero dañado
+			Si contadorBarcosJugador[2] == 1 Entonces
+				contadorBarcosJugador[2] <- contadorBarcosJugador[2] - 1;
+			SiNo
+				contadorBarcosJugador[2] <- contadorBarcosJugador[2] - 1;
+			FinSi
+		9: // formato del portaviones
+			matrizJugador[fila, columna] <- -9; // representa portaviones dañado
+			Si contadorBarcosJugador[1] == 1 Entonces
+				contadorBarcosJugador[1] <- contadorBarcosJugador[1] - 1;
+			SiNo
+				contadorBarcosJugador[1] <- contadorBarcosJugador[1] - 1;
+			FinSi
+			
+		De Otro Modo:
+	FinSegun
+	
+	
 FinSubAlgoritmo
 
 SubAlgoritmo finDelJuego(nombre_jugador por referencia)
@@ -628,8 +714,8 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
 		// SERIA UN CHECK DE LA VARIABLE COLUMNA DE ARRIBA MAS LAS QUE TIENE QUE SER COLOCADAS
 		//si el lugar es en columna i y lugar en columna i +1 +2+ +4 0 hago algo 		
 		Repetir	
-		columna <- Aleatorio(1, 10 - barco[tipo] + 1);
-        fila <- Aleatorio(1, 10);
+			columna <- Aleatorio(1, 10 - barco[tipo] + 1);
+			fila <- Aleatorio(1, 10);
 		Hasta Que matrizEnemigo[fila,columna] == 0 y matrizEnemigo[fila,columna+1] == 0 y matrizEnemigo[fila,columna+2] == 0
         // Colocar el barco en la matriz
         h <- 0;
@@ -639,7 +725,7 @@ SubProceso  colocar_barcos_enemigo(matrizEnemigo Por Referencia)
             h <- h + 1;
         FinPara
 		
-	
+		
     FinPara
 	
 	// Se le indica al jugador que presinando enter se colocaran 
@@ -663,7 +749,7 @@ FinSubProceso
 
 
 SubProceso ReglasDelJuego
-
+	
 	
 	Escribir "                                                                                    Reglas del juego"; 
 	Escribir "*************************************************************************************************************************++++**************************************************";
@@ -702,6 +788,3 @@ SubProceso ReglasDelJuego
 
 	Escribir "";
 FinSubProceso
-
-
-
