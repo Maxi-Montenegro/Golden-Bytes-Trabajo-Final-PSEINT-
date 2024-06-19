@@ -5,8 +5,12 @@
 Proceso BatallaNavalMain
 	
 	Definir nombre_jugador Como Caracter;
-	Definir opcion Como Entero;
-	
+	Definir encontrado Como Logico;
+	Definir dato Como Caracter;
+	Definir datonumerico, i Como Entero;
+	Definir opcionNumeros como cadena;
+	opcionNumeros <- "1234";
+	datonumerico <- 0 ;
 	mensajeAmpliarPantalla();
 	Borrar Pantalla;
 	//textoEstatico();
@@ -16,6 +20,7 @@ Proceso BatallaNavalMain
 	MensajeBienvenida(Nombre_Jugador);
 	Borrar Pantalla;
 	
+	
 	Repetir
 		Escribir "Hola soldado ", nombre_jugador, ". Este es el Menu del juego.";
 		escribir "";
@@ -24,10 +29,24 @@ Proceso BatallaNavalMain
 		Escribir "3- Creditos";// aqui se redirige al subalgoritmo "creditos" 
 		Escribir "4- Salir";
 		Escribir sin saltar "Digite la opcion de menu:";
-		Leer opcion;
+		Leer dato;
+		encontrado <- falso;
+		datonumerico <- 0;
+		i<-0;
+		
+		// Busqueda secuencial
+		mientras (i<3 y encontrado = Falso ) Hacer
+			Si (Subcadena(opcionNumeros,i,i) == dato) Entonces
+				encontrado <- Verdadero;
+				datonumerico <- ConvertirANumero(dato);
+			FinSi
+			i <- i +1;
+		FinMientras
+		Escribir "Se equivocó de opcion de menu.";
 		escribir "";
 		Borrar Pantalla;
-		Segun opcion Hacer
+		
+		Segun datonumerico Hacer
 			1:
 				batallaNavalLoop(nombre_jugador);
 			2:
@@ -39,7 +58,7 @@ Proceso BatallaNavalMain
 			De Otro Modo:
 				Escribir "Se equivocó de opcion de menu.";
 		FinSegun
-	Hasta Que opcion == 4
+	Hasta Que datonumerico == 4
 	
 FinProceso
 
@@ -284,6 +303,7 @@ SubAlgoritmo batallaNavalLoop(nombre_jugador Por Referencia)
 	
 	//Mostrar mensaje de agradecimiento al final del juego
 	finDelJuego(nombre_jugador);
+	Creditos();
 	
 FinSubAlgoritmo
 
