@@ -336,9 +336,7 @@ SubAlgoritmo mostrarTableroJugador(matrizJugador Por Referencia)
 	FinPara 
 	
 	Escribir "Este es tu tablero piensa en donde ubicar tus barcos"; 
-	
-
-	
+		
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		Escribir ""; 
 		esJugador <- Verdadero;
@@ -651,7 +649,7 @@ SubAlgoritmo ataqueDelJugador(matrizEnemigo Por Referencia, contadorBarcosEnemig
 	mientras h = 0 hacer
 		h <-1;
 				
-		Escribir "elija en que columna quiere colocar su barco (1-2-3-4-5-6-7-8-9-10) ";
+		Escribir "elija en que columna quiere disparar al barco Enemigo (1-2-3-4-5-6-7-8-9-10) ";
 		Leer dato;
 		
 		encontrado <- falso;
@@ -677,7 +675,7 @@ SubAlgoritmo ataqueDelJugador(matrizEnemigo Por Referencia, contadorBarcosEnemig
 	h <-0;
 	mientras h = 0 hacer
 		h <-1;
-		Escribir "elija en que fila quiere colocar su barco (A-B-C-D-E-F-G-H-I-J) ";
+		Escribir "elija en que fila quiere disparar al barco enemigo (A-B-C-D-E-F-G-H-I-J) ";
 		Leer dato;
 		dato <- Mayusculas(dato);
 		encontrado <- falso;
@@ -706,46 +704,56 @@ SubAlgoritmo ataqueDelJugador(matrizEnemigo Por Referencia, contadorBarcosEnemig
 	Segun matrizEnemigo[fila, columna] Hacer
 		0:
 			Escribir "Le has dado al Agua";
+			Escribir "";
 			matrizEnemigo[fila, columna] <- -1; // -1 representa agua
 		6: // formato de la lancha
 			matrizEnemigo[fila, columna] <- -6;// representa lancha dañado
 			Si contadorBarcosEnemigo[4] == 1 Entonces
-				Escribir "Excelente soldado ha destruido la lancha del enemigo!";				
+				Escribir "Excelente soldado ha destruido la lancha del enemigo!";
+				Escribir "";
 				contadorBarcosEnemigo[4] <- contadorBarcosEnemigo[4] - 1;
 			SiNo
 				Escribir "Genial soldado, le diste a la lancha del enemigo";
+				Escribir "";
 				contadorBarcosEnemigo[4] <- contadorBarcosEnemigo[4] - 1;
 			FinSi
 		7: // formato del submarino
 			matrizEnemigo[fila, columna] <- -7; // representa submarino dañado
 			Si contadorBarcosEnemigo[3] == 1 Entonces
 				Escribir "Excelente soldado ha destruido el submarino del enemigo!";
+				Escribir "";
 				contadorBarcosEnemigo[3] <- contadorBarcosEnemigo[3] - 1;
 			SiNo
 				Escribir "Genial soldado, le diste al submarino del enemigo";
+				Escribir "";
 				contadorBarcosEnemigo[3] <- contadorBarcosEnemigo[3] - 1;
 			FinSi
 		8: // formato del crucero
 			matrizEnemigo[fila, columna] <- -8; // representa crucero dañado
 			Si contadorBarcosEnemigo[2] == 1 Entonces
 				Escribir "Excelente soldado ha destruido el crucero del enemigo!";
+				Escribir "";
 				contadorBarcosEnemigo[2] <- contadorBarcosEnemigo[2] - 1;
 			SiNo
 				Escribir "Genial soldado, le diste al crucero del enemigo";
+				Escribir "";
 				contadorBarcosEnemigo[2] <- contadorBarcosEnemigo[2] - 1;
 			FinSi
 		9: // formato del portaviones
 			matrizEnemigo[fila, columna] <- -9; // representa portaviones dañado
 			Si contadorBarcosEnemigo[1] == 1 Entonces
 				Escribir "Excelente soldado ha destruido el portaviones del enemigo!";
+				Escribir "";
 				contadorBarcosEnemigo[1] <- contadorBarcosEnemigo[1] - 1;
 			SiNo
 				Escribir "Genial soldado, le diste al portaviones del enemigo.";
+				Escribir "";
 				contadorBarcosEnemigo[1] <- contadorBarcosEnemigo[1] - 1;
 			FinSi
 			
 		De Otro Modo:
 			Escribir "Ya has atacado aqui, turno del enemigo";
+			Escribir "";
 	FinSegun
 	
 	
@@ -794,33 +802,51 @@ SubAlgoritmo ataqueDelEnemigo(matrizJugador Por Referencia, contadorBarcosJugado
 	//Verficar coordenadas
 	Segun matrizJugador[fila, columna] Hacer
 		0:
+			Escribir "El enemigo le ha dado al Agua";
+			Escribir "";
 			matrizJugador[fila, columna] <- -1; // -1 representa agua
 		6: // formato de la lancha
 			matrizJugador[fila, columna] <- -6;// representa lancha dañado
 			Si contadorBarcosJugador[4] == 1 Entonces
+				Escribir "El enemigo a destruido tu Lancha";
+				Escribir "";
 				contadorBarcosJugador[4] <- contadorBarcosJugador[4] - 1;
 			SiNo
+				Escribir "El enemigo ha dañado tu Lancha";
+				Escribir "";
 				contadorBarcosJugador[4] <- contadorBarcosJugador[4] - 1;
 			FinSi
 		7: // formato del submarino
 			matrizJugador[fila, columna] <- -7; // representa submarino dañado
 			Si contadorBarcosJugador[3] == 1 Entonces
+				Escribir "El enemigo ha destruido tu Submarino";
+				Escribir "";
 				contadorBarcosJugador[3] <- contadorBarcosJugador[3] - 1;
 			SiNo
+				Escribir "El enemigo ha dañado tu Submarino";
+				Escribir "";
 				contadorBarcosJugador[3] <- contadorBarcosJugador[3] - 1;
 			FinSi
 		8: // formato del crucero
 			matrizJugador[fila, columna] <- -8; // representa crucero dañado
 			Si contadorBarcosJugador[2] == 1 Entonces
+				Escribir "El enemigo ha destruido tu Crucero";
+				Escribir "";
 				contadorBarcosJugador[2] <- contadorBarcosJugador[2] - 1;
 			SiNo
+				Escribir "El enemigo a dañado tu Crucero";
+				Escribir "";
 				contadorBarcosJugador[2] <- contadorBarcosJugador[2] - 1;
 			FinSi
 		9: // formato del portaviones
 			matrizJugador[fila, columna] <- -9; // representa portaviones dañado
 			Si contadorBarcosJugador[1] == 1 Entonces
+				Escribir "El enemigo ha destruido tu Portaviones";
+				Escribir "";
 				contadorBarcosJugador[1] <- contadorBarcosJugador[1] - 1;
 			SiNo
+				Escribir "El enemigo ha dañado tu Portaviones";
+				Escribir "";
 				contadorBarcosJugador[1] <- contadorBarcosJugador[1] - 1;
 			FinSi
 			
