@@ -35,15 +35,16 @@ Proceso BatallaNavalMain
 		i<-0;
 		
 		// Busqueda secuencial
-		mientras (i<3 y encontrado = Falso ) Hacer
+		mientras (i<4 y encontrado = Falso ) Hacer
 			Si (Subcadena(opcionNumeros,i,i) == dato) Entonces
 				encontrado <- Verdadero;
 				datonumerico <- ConvertirANumero(dato);
+				Escribir datonumerico;
 			FinSi
 			i <- i +1;
 		FinMientras
-		Escribir "Se equivocó de opcion de menu.";
-		escribir "";
+//		Escribir "Se equivocó de opcion de menu.";
+//		escribir "";
 		Borrar Pantalla;
 		
 		Segun datonumerico Hacer
@@ -59,6 +60,8 @@ Proceso BatallaNavalMain
 				Escribir "Se equivocó de opcion de menu.";
 		FinSegun
 	Hasta Que datonumerico == 4
+	
+	
 	
 FinProceso
 
@@ -248,7 +251,7 @@ FinSubProceso
 SubAlgoritmo batallaNavalLoop(nombre_jugador Por Referencia)
 	
 	//ESTAS VARIABLES  O AL MENOS LAS MATRIZ JUGADOR Y ENEMIGO VAN A TENER QUE SER PASAR POR REFERENCIA a los otrso sub algoritomos
-	Definir matrizJugador, contadorBarcosEnemigo, contadorBarcosJugador, i Como Entero;
+	Definir matrizJugador, contadorBarcosEnemigo, contadorBarcosJugador, i, j Como Entero;
 	Dimension matrizJugador[11,11];
 	Definir matrizEnemigo Como Entero;
 	Dimension matrizEnemigo[11,11];
@@ -266,7 +269,13 @@ SubAlgoritmo batallaNavalLoop(nombre_jugador Por Referencia)
     contadorBarcosJugador[3] <- 4; // tamaño del submarino
     contadorBarcosJugador[4] <- 2; // tamaño de la lancha
 	
-	
+	para i <- 0 Hasta 10 Con Paso 1 Hacer
+		para j <- 0 Hasta 10 Con Paso 1 Hacer
+			Escribir Sin Saltar "    "; //centrado de la matriz margen superior
+			matrizJugador[i,j] <- 0;
+		FinPara
+		
+	FinPara
 	mostrarTableroJugador(matrizJugador);
 	Borrar Pantalla;
 	IngresarPosicionBarcoJugador(matrizJugador);
@@ -296,9 +305,13 @@ SubAlgoritmo batallaNavalLoop(nombre_jugador Por Referencia)
 	Hasta Que ganar o perder
 	
 	Si ganar Entonces
+		Borrar Pantalla;
+		Escribir "";
 		Escribir "Felicitaciones ha ganado!!!";
 	SiNo
-		Escribir "No te rindas, vuelve a jugar";
+		Borrar Pantalla;
+		Escribir "";
+		Escribir "Has sido derrotado. No te rindas, vuelve a jugar";
 	FinSi
 	
 	//Mostrar mensaje de agradecimiento al final del juego
@@ -324,13 +337,7 @@ SubAlgoritmo mostrarTableroJugador(matrizJugador Por Referencia)
 	
 	Escribir "Este es tu tablero piensa en donde ubicar tus barcos"; 
 	
-	para i <- 0 Hasta 10 Con Paso 1 Hacer
-		para j <- 0 Hasta 10 Con Paso 1 Hacer
-			Escribir Sin Saltar "    "; //centrado de la matriz margen superior
-			matrizJugador[i,j] <- 0;
-		FinPara
-		
-	FinPara
+
 	
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
 		Escribir ""; 
@@ -347,12 +354,10 @@ FinSubAlgoritmo
 
 // En este subproceso le indicamos al juagdor para que coloque sus barcos en el tablero
 
-Proceso colocar_barco
+SubAlgoritmo IngresarPosicionBarcoJugador(matriz Por Referencia) 
 	definir posicion,columna, fila,i,j,size,tipo,h,formato Como Entero;
 	definir arregloLetras, dato, arregloNumeros Como Caracter;
 	definir columnaLetras, columnaNumeros como cadena;
-	definir matriz Como Real;
-	Dimension matriz[11,11];
 	Definir esValido, encontrado Como Logico;
 	esValido <- Verdadero;
 	Dimension arregloLetras(11);
@@ -362,8 +367,7 @@ Proceso colocar_barco
 	columna <- 12;
 	fila <- 12;
 	
-	fila <- 12;
-	
+
 	Para i<-0 Hasta 10 Con Paso 1 Hacer
 		arregloNumeros[i] <- SubCadena(columnaNumeros,i,i);
 	FinPara
@@ -400,11 +404,11 @@ Proceso colocar_barco
     formatos[4] <- 6; // formato de la lancha
 	
 	// Inicializar la matriz con agua (0 representa agua)
-    Para i <- 1 Hasta 10 Hacer
-        Para j <- 1 Hasta 10 Hacer
-            matriz[i, j] <- 0;
-        FinPara
-    FinPara
+//    Para i <- 1 Hasta 10 Hacer
+//        Para j <- 1 Hasta 10 Hacer
+//            matriz[i, j] <- 0;
+//        FinPara
+//    FinPara
     
     // Colocar cada barco automáticamente
     Para tipo <- 1 Hasta 4 Hacer
@@ -415,8 +419,11 @@ Proceso colocar_barco
 			// Solicitar columna al usuario
 			mientras h = 0 hacer
 				h <-1;
+				mostrarTableroJugador(matriz);
+				
 				Escribir "elija en que columna quiere colocar su barco (1-2-3-4-5-6-7-8-9-10) ";
 				Leer dato;
+				
 				encontrado <- falso;
 				i<-0;
 				// Busqueda secuencial
@@ -430,7 +437,7 @@ Proceso colocar_barco
 				si dato = "10" entonces
 					columna <- 10;
 				FinSi
-				si columna <1 o columna>11 Entonces
+				si columna < 1 o columna > 11 Entonces
 					escribir "el valor dado esta fuera del rango";
 					h <- 0;
 				FinSi
@@ -482,15 +489,10 @@ Proceso colocar_barco
             h <- h + 1;
         FinPara
 		
-		Escribir Sin Saltar "Matriz el barco a sido colocado en la siguiente ubicacion (",fila,",",columna,"):";
+		Escribir Sin Saltar "El barco a sido colocado en la siguiente ubicacion del tablero (",fila,",",arregloLetras[columna],"):";
 		Escribir "";
-		Para i <- 1 Hasta 10 hacer;
-			Para j <- 1 Hasta 10 con paso 1 hacer;
-				Escribir sin saltar matriz[i,j], " ";
-			FinPara;
-			Escribir "";
-			
-		FinPara
+		mostrarTableroJugador(matriz);
+		Borrar Pantalla;
     FinPara
 	
 	// Se le indica al jugador que presinando enter se colocaran 
@@ -510,7 +512,7 @@ Proceso colocar_barco
 	leer tecla;
 	Escribir "";
 	
-FinProceso
+FinSubAlgoritmo
 
 SubAlgoritmo mostrarTableroJugadorEnemigo(matrizJugador Por Referencia, matrizEnemigo Por Referencia)
 	Definir i,j, filaNumeros Como Entero;
@@ -555,9 +557,11 @@ SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, f
 			Escribir Sin Saltar "     "; // separacion entre los numeros
 		sino 
 			//Aqui imprimimos matriz (MODO DEBUG) DESCOMITEAR ESTAS 2 LINEAS Y COMMITEAR LAS OTRAS
-//			Escribir Sin Saltar matriz[i,j+1]; // MODO DEBUG
-//			Escribir Sin Saltar "     "; // MODO DEBUG
+
 			Si esJugador Entonces
+//				Escribir Sin Saltar matriz[i,j+1]; // MODO DEBUG
+//				Escribir Sin Saltar "     "; // MODO DEBUG
+			
 				si matriz[i,j+1] == -1 Entonces 
 					Escribir Sin Saltar "A"; // 
 					Escribir Sin Saltar "     ";
@@ -565,11 +569,6 @@ SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, f
 				si matriz[i,j+1] == 0 Entonces 
 					Escribir Sin Saltar "~"; // 
 					Escribir Sin Saltar "     "; // separacion del simbolo agua
-				FinSi
-				si matriz[i,j+1] == 1 Entonces 
-					
-					Escribir Sin Saltar "¶"; // 
-					Escribir Sin Saltar "     ";
 				FinSi
 				si matriz[i,j+1] < -1 Entonces 
 					Escribir Sin Saltar "*"; // 
@@ -596,32 +595,23 @@ SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, f
 					Escribir Sin Saltar "A"; // 
 					Escribir Sin Saltar "     ";
 				FinSi
-				si matriz[i,j+1] == 0 Entonces 
+				si matriz[i,j+1] >= 0 Entonces 
 					Escribir Sin Saltar "~"; // 
 					Escribir Sin Saltar "     "; // separacion del simbolo agua
 				FinSi
-				si matriz[i,j+1] == 1 Entonces 
-					
-					Escribir Sin Saltar "¶"; // 
-					Escribir Sin Saltar "     ";
-				FinSi
-				si matriz[i,j+1] < -1 Entonces 
-					Escribir Sin Saltar "*"; // 
-					Escribir Sin Saltar "     ";
-				FinSi
-				si matriz[i,j+1] == 6 Entonces 
+				si matriz[i,j+1] == -6 Entonces 
 					Escribir Sin Saltar "L"; // 
 					Escribir Sin Saltar "     ";
 				FinSi
-				si matriz[i,j+1] == 7 Entonces 
+				si matriz[i,j+1] == -7 Entonces 
 					Escribir Sin Saltar "S"; // 
 					Escribir Sin Saltar "     ";
 				FinSi
-				si matriz[i,j+1] == 8 Entonces 
+				si matriz[i,j+1] == -8 Entonces 
 					Escribir Sin Saltar "C"; // 
 					Escribir Sin Saltar "     ";
 				FinSi
-				si matriz[i,j+1] == 9 Entonces 
+				si matriz[i,j+1] == -9 Entonces 
 					Escribir Sin Saltar "P"; // 
 					Escribir Sin Saltar "     ";
 				FinSi
@@ -636,33 +626,75 @@ FinSubAlgoritmo
 // Esta funcion permite atacar al enemigo
 SubAlgoritmo ataqueDelJugador(matrizEnemigo Por Referencia, contadorBarcosEnemigo Por Referencia)
 	Escribir "Ingresa la coordenada para atacar al enemigo";
-	Definir posicion, columna, fila, i, j como Entero;
-	Definir arregloLetras, dato, aux Como Caracter;
-	Definir columnaLetras como cadena;
+	Definir posicion, columna, fila, i, j, h como Entero;
+	definir arregloLetras, dato, arregloNumeros Como Caracter;
+	Definir columnaLetras,columnaNumeros como cadena;
 	Definir encontrado Como Logico; 
 	Dimension arregloLetras(11);
+	dimension arregloNumeros(11);
 	columnaLetras <- " ABCDEFGHIJ";
+	columnaNumeros <- " 1234567890";
+	columna <- 12;
+	fila <- 12;
 	
 	
 	Para i<-0 Hasta 10 Con Paso 1 Hacer
-		arregloLetras[i] <- SubCadena(columnaLetras,i,i);
+		arregloNumeros[i] <- SubCadena(columnaNumeros,i,i);
 	FinPara
 	
-	// Solicitar columna y fila al usuario
-	Escribir "Elije la columna para atacar (1-2-3-4-5-6-7-8-9-10) ";
-	Leer columna;
-	Escribir "Elije la fila para atacar (A-B-C-D-E-F-G-H-I-J) ";
-	Leer dato;
-	dato <- Mayusculas(dato);
-	encontrado <- falso;
-	i<-1;//  Empezamos desde el 1 para no contar al espacio como encontrado
-	// Busqueda secuencial
-	mientras (i<11 y encontrado = Falso ) Hacer
-		Si (arregloLetras[i] = dato) Entonces
-			encontrado <- Verdadero;
-			fila <- i;
+	Para j<-0 Hasta 10 Con Paso 1 Hacer
+		arregloLetras[j] <- SubCadena(columnaLetras,j,j);
+	FinPara
+	
+	h <-0;
+	// Solicitar columna al usuario
+	mientras h = 0 hacer
+		h <-1;
+				
+		Escribir "elija en que columna quiere colocar su barco (1-2-3-4-5-6-7-8-9-10) ";
+		Leer dato;
+		
+		encontrado <- falso;
+		i<-0;
+		// Busqueda secuencial
+		mientras (i<11 y encontrado = Falso ) Hacer
+			Si (arregloNumeros[i] = dato) Entonces
+				encontrado <- Verdadero;
+				columna <- i;
+			FinSi
+			i <- i +1;
+		FinMientras
+		si dato = "10" entonces
+			columna <- 10;
 		FinSi
-		i <- i +1;
+		si columna < 1 o columna > 11 Entonces
+			escribir "el valor dado esta fuera del rango";
+			h <- 0;
+			FinSi
+	FinMientras
+	
+	// solicitar fila
+	h <-0;
+	mientras h = 0 hacer
+		h <-1;
+		Escribir "elija en que fila quiere colocar su barco (A-B-C-D-E-F-G-H-I-J) ";
+		Leer dato;
+		dato <- Mayusculas(dato);
+		encontrado <- falso;
+		j<-0;
+		//Busqueda secuencial
+		mientras (j<11 y encontrado = Falso ) Hacer
+			Si (arregloLetras[j] = dato) Entonces
+				encontrado <- Verdadero;
+				fila <- j;
+			FinSi
+			j <- j +1;
+		FinMientras
+		
+		si fila <1 o fila>11 Entonces
+			escribir "el valor dado esta fuera del rango";
+			h <- 0;
+		FinSi
 	FinMientras
 	
 	Borrar Pantalla;
@@ -738,14 +770,16 @@ SubAlgoritmo ataqueDelEnemigo(matrizJugador Por Referencia, contadorBarcosJugado
 		arregloLetras[i] <- SubCadena(columnaLetras,i,i);
 	FinPara
 	
-	// Tomar valores al azar de filas y columnas para atacar 
-	columna <- Aleatorio(1,10);
-	dato <- Subcadena(columnaLetras ,i,i);
-	
-	dato <- Mayusculas(dato);
-	encontrado <- falso;
-	fila <- Aleatorio(1,10) ;
-	
+
+	Repetir
+		// Tomar valores al azar de filas y columnas para atacar 
+		columna <- Aleatorio(1,10);
+		dato <- Subcadena(columnaLetras ,i,i);
+		
+		dato <- Mayusculas(dato);
+		encontrado <- falso;
+		fila <- Aleatorio(1,10) ;
+	Hasta Que matrizJugador[fila, columna] >= 0
 	
 	i<-1;//  Empezamos desde el 1 para no contar al espacio como encontrado
 	// Busqueda secuencial
