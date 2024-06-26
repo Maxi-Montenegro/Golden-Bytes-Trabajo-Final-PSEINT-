@@ -356,7 +356,7 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matriz Por Referencia)
 	definir posicion,columna, fila,i,j,size,tipo,h,formato Como Entero;
 	definir arregloLetras, dato, arregloNumeros Como Caracter;
 	definir columnaLetras, columnaNumeros como cadena;
-	Definir esValido, encontrado Como Logico;
+	Definir esValido, encontrado, posicionOcupada Como Logico;
 	esValido <- Verdadero;
 	Dimension arregloLetras(11);
 	dimension arregloNumeros(11);
@@ -465,20 +465,27 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matriz Por Referencia)
 				FinSi
 			FinMientras
 			
-			si (columna + barco[tipo]-1) > 10 Entonces
+			
+			si (columna + barco[tipo]) > 11 Entonces
 				
 				Escribir "El ",nombreDeBarco[tipo] ," se ubicaria fuera del tablero, elija otra ubicacion ";
 				Escribir "";
 			SiNo
-				si matriz[fila,columna] <> 0 o matriz[fila,columna+1] <> 0 o matriz[fila,columna+2] <> 0 Entonces
+				posicionOcupada <- Falso;
+				i <- 0;
+				Mientras i < barco[tipo] y posicionOcupada == Falso Hacer
+					si matriz[fila,columna + i] <> 0 Entonces					
+						posicionOcupada <- Verdadero;
+					FinSi
+					i <- i + 1;
+				FinMientras
+				si (posicionOcupada) Entonces
 					Escribir "Ya hay un barco en esta posicion, elija otra.";
 					Escribir "";
 				FinSi
-			finsi
+			finsi			
 			
-			
-			
-		Hasta Que ((columna + barco[tipo]-1) < 10) y (matriz[fila,columna] == 0 y matriz[fila,columna+1] == 0 y matriz[fila,columna+2] == 0)
+		Hasta Que ((columna + barco[tipo]-1) < 11) y (posicionOcupada == falso)
         
         // Colocar el barco en la matriz
         h <- 0;
@@ -487,28 +494,11 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matriz Por Referencia)
             h <- h + 1;
         FinPara
 		
-		Escribir Sin Saltar "El barco a sido colocado en la siguiente ubicacion del tablero (",fila,",",arregloLetras[columna],"):";
+		Escribir Sin Saltar "El barco a sido colocado en la siguiente ubicacion del tablero (",columna,",",arregloLetras[fila],"):";
 		Escribir "";
 		mostrarTableroJugador(matriz);
 		Borrar Pantalla;
     FinPara
-	
-	// Se le indica al jugador que presinando enter se colocaran 
-	//los barcos del enemigo en el tablero
-	
-	Escribir " El enemigo colocara sus barcos en el tablero";
-	escribir " Presione ENTER para continuar";
-	leer tecla;
-    
-    // Mostrar la matriz con los barcos colocados automáticamente
-    Escribir "Los barcos han sido colocados correctamente:";
-	Escribir "";
-	
-	
-	Escribir "";
-	Escribir " Presione ENTER para continuar";
-	leer tecla;
-	Escribir "";
 	
 FinSubAlgoritmo
 
@@ -589,6 +579,8 @@ SubAlgoritmo mostrarValor(matriz Por Referencia, columnaLetras Por Referencia, f
 					Escribir Sin Saltar "     ";
 				FinSi
 			SiNo
+//				Escribir Sin Saltar matriz[i,j+1]; // MODO DEBUG
+//				Escribir Sin Saltar "     "; // MODO DEBUG
 				si matriz[i,j+1] == -1 Entonces 
 					Escribir Sin Saltar "A"; // 
 					Escribir Sin Saltar "     ";
@@ -870,6 +862,7 @@ SubAlgoritmo   colocar_barcos_enemigo(matrizEnemigo Por Referencia)
     definir formatos Como Entero;
 	Dimension barco[5];
 	dimension formatos[5];
+	Definir posicionOcupada Como Logico;
 	definir tecla Como Caracter;
     
     // Definir tamaños y formatos para cada tipo de barco
@@ -891,16 +884,27 @@ SubAlgoritmo   colocar_barcos_enemigo(matrizEnemigo Por Referencia)
 		Repetir	
 			columna <- Aleatorio(1, 10 - barco[tipo] + 1);
 			fila <- Aleatorio(1, 10);
-		Hasta Que matrizEnemigo[fila,columna] == 0 y matrizEnemigo[fila,columna+1] == 0 y matrizEnemigo[fila,columna+2] == 0
+			posicionOcupada <- Falso;
+			si (columna + barco[tipo]) > 11 Entonces
+				posicionOcupada <- Verdadero;
+			SiNo				
+				i <- 0;
+				Mientras i < barco[tipo] y posicionOcupada == Falso Hacer
+					si matrizEnemigo[fila,columna + i] <> 0 Entonces					
+						posicionOcupada <- Verdadero;
+					FinSi
+					i <- i + 1;
+				FinMientras
+			finsi			
+			
+		Hasta Que posicionOcupada == Falso
         // Colocar el barco en la matriz
         h <- 0;
 		
         Para i <- 0 Hasta barco[tipo]-1 Hacer
             matrizEnemigo[fila, columna+h] <- formatos[tipo];
             h <- h + 1;
-        FinPara
-		
-		
+        FinPara		
     FinPara
 	
 	// Se le indica al jugador que presinando enter se colocaran 
