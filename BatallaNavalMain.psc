@@ -515,7 +515,7 @@ SubAlgoritmo mostrarTableroJugadorEnemigo(matrizJugador Por Referencia, matrizEn
 		
 	FinPara 
 	
-	Escribir "Este es tu tablero                                                                        Este es el tablero del enemigo"; 
+	Escribir "                                Este es tu tablero                                                             Este es el tablero del enemigo"; 
 	
 	
 	para i <- 0 Hasta 10 Con Paso 1 Hacer
