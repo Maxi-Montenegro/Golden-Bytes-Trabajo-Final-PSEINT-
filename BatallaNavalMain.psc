@@ -24,10 +24,10 @@ Proceso BatallaNavalMain
 	Repetir
 		Escribir "Hola soldado ", nombre_jugador, ". Este es el Menu del juego.";
 		escribir "";
-		Escribir "1- Jugar"; // aqui se redirige al subalgoritmo "mostrarTableroJugador(matrizJugador Por Referencia)"
-		Escribir "2- Reglas del juego";
+		Escribir "1- Jugar"; // aqui se redirige al subalgoritmo "batallaNavalLoop"
+		Escribir "2- Reglas del juego"; // aqui se redirige al ReglasDelJuego
 		Escribir "3- Creditos";// aqui se redirige al subalgoritmo "creditos" 
-		Escribir "4- Salir";
+		Escribir "4- Salir"; // aqui se redirige al subalgoritmo "salir" 
 		Escribir sin saltar "Digite la opcion de menu:";
 		Leer dato;
 		encontrado <- falso;
