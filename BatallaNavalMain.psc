@@ -13,10 +13,10 @@ Proceso BatallaNavalMain
 	datonumerico <- 0 ;
 	mensajeAmpliarPantalla();
 	Borrar Pantalla;
-	//textoEstatico();
-	//Borrar Pantalla;
-	//	Animacion();
-	//	Borrar Pantalla;
+	textoEstatico();
+	Borrar Pantalla;
+	Animacion();
+	Borrar Pantalla;
 	MensajeBienvenida(Nombre_Jugador);
 	Borrar Pantalla;
 	
