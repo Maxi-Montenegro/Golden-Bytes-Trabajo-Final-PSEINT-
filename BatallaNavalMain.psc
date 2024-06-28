@@ -401,12 +401,6 @@ SubAlgoritmo IngresarPosicionBarcoJugador(matriz Por Referencia)
     formatos[3] <- 7; // formato del submarino
     formatos[4] <- 6; // formato de la lancha
 	
-	// Inicializar la matriz con agua (0 representa agua)
-//    Para i <- 1 Hasta 10 Hacer
-//        Para j <- 1 Hasta 10 Hacer
-//            matriz[i, j] <- 0;
-//        FinPara
-//    FinPara
     
     // Colocar cada barco automáticamente
     Para tipo <- 1 Hasta 4 Hacer
